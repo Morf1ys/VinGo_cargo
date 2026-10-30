@@ -9,7 +9,7 @@ export function FeaturedServiceCard({ service }: FeaturedServiceCardProps) {
   const Icon = service.icon;
 
   return (
-    <div className="group relative flex h-full flex-col justify-center gap-6 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-white/[0.05] via-surface-default/35 to-background-primary/85 p-6 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] backdrop-blur-md transition-[transform,border-color,background-color] duration-300 ease-standard motion-reduce:transition-none hover:-translate-y-1 hover:border-white/[0.16] hover:from-white/[0.09] lg:min-h-[220px]">
+    <div className="group relative flex h-full flex-col justify-start gap-6 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-white/[0.05] via-surface-default/35 to-background-primary/85 p-6 shadow-[0_16px_36px_-24px_rgba(0,0,0,0.5)] backdrop-blur-md transition-[transform,border-color,background-color] duration-300 ease-standard motion-reduce:transition-none hover:-translate-y-1 hover:border-white/[0.16] hover:from-white/[0.09] short:gap-3 short:p-5">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/15 to-transparent"

@@ -36,7 +36,7 @@ export function Footer() {
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[280px] w-[640px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-primary/12 blur-3xl"
       />
 
-      <Container size="wide" className="relative min-[1440px]:max-w-[1320px]">
+      <Container size="wide" className="relative">
         <motion.div
           initial="hidden"
           whileInView="visible"

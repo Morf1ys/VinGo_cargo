@@ -23,10 +23,7 @@ export function Header() {
           : "border-white/[0.04] bg-[rgba(8,10,11,0.22)] shadow-none backdrop-blur-[8px]",
       )}
     >
-      {/* Same local max-width as the Hero container, kept in sync manually
-          since Container's shared "wide" size stays at 960px for other
-          sections. */}
-      <Container size="wide" className="min-[1440px]:max-w-[1320px]">
+      <Container size="wide">
         <div className="flex h-[72px] items-center justify-between gap-6">
           <Logo />
 

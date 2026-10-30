@@ -28,11 +28,11 @@ export function ReviewsHeader() {
         Відгуки клієнтів
       </Typography>
 
-      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance">
+      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance max-md:text-h2 short:mt-3">
         Люди, яким ми допомогли з переїздом
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 short:mt-3">
         Кожен переїзд — інша історія. Ось декілька з них, розказаних нашими клієнтами з Вінниці.
       </Typography>
     </motion.div>

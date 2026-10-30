@@ -13,8 +13,8 @@ const SERVICES_SECTION_ID = "services";
 
 export function Services() {
   return (
-    <Section id={SERVICES_SECTION_ID} spacing="spacious" className="bg-background-secondary">
-      <Container size="wide" className="min-[1440px]:max-w-[1320px]">
+    <Section id={SERVICES_SECTION_ID} spacing="compact" fill className="bg-background-primary">
+      <Container size="wide">
         <ServicesHeader />
         <FeaturedServices />
         <AdditionalServices />

@@ -22,17 +22,17 @@ export function ServicesHeader() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
       variants={variants}
-      className="mx-auto max-w-2xl text-center"
+      className="mx-auto max-w-3xl text-center"
     >
       <Typography as="span" variant="overline" weight="semibold" color="accent">
         Послуги
       </Typography>
 
-      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance">
+      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance max-md:text-h2 lg:mt-4 short:mt-3">
         Все необхідне для комфортного переїзду
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 max-w-narrow">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 max-w-2xl lg:mt-4 short:mt-3">
         Від окремих вантажників до комплексної організації квартирних та офісних переїздів.
       </Typography>
     </motion.div>

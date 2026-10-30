@@ -63,14 +63,14 @@ function HeroDashboard() {
         className="pointer-events-none absolute -left-6 -top-6 -z-10 h-2/3 w-2/3 rounded-full bg-primary/12 blur-2xl"
       />
 
-      <div className="relative overflow-hidden rounded-md border border-white/8 border-t-white/15 border-l-primary/15 bg-linear-to-br from-background-primary/50 via-background-secondary/40 to-background-primary/48 p-6 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.55)] backdrop-blur-lg">
+      <div className="relative overflow-hidden rounded-md border border-white/8 border-t-white/15 border-l-primary/15 bg-linear-to-br from-background-primary/50 via-background-secondary/40 to-background-primary/48 p-6 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.55)] backdrop-blur-lg short:p-5">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
         />
         <div className="flex flex-col divide-y divide-white/5">
           {DASHBOARD_ROWS.map((row, index) => (
-            <div key={row.label} className="flex items-center justify-between gap-3 py-5 first:pt-0 last:pb-0">
+            <div key={row.label} className="flex items-center justify-between gap-3 py-5 first:pt-0 last:pb-0 short:py-3.5">
               <div className="flex min-w-0 items-center gap-2.5">
                 <row.icon className="h-5 w-5 shrink-0 text-primary" strokeWidth={1.5} aria-hidden="true" />
                 <Typography as="span" variant="bodySmall" color="secondary" className="truncate">
@@ -103,7 +103,7 @@ function HeroContent() {
         as="h1"
         variant="h2"
         weight="semibold"
-        className="mt-6 max-w-sm sm:max-w-md sm:text-4xl lg:max-w-xl lg:text-display"
+        className="mt-6 max-w-sm sm:max-w-md sm:text-4xl lg:max-w-xl lg:text-display short:mt-4 short:text-5xl"
       >
         Вантажники та переїзди у Вінниці
       </Typography>
@@ -112,13 +112,13 @@ function HeroContent() {
         Акуратно. Вчасно. Без зайвих витрат.
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mt-3 max-w-md md:mt-4">
+      <Typography as="p" variant="body" color="secondary" className="mt-3 max-w-md md:mt-4 xl:max-w-lg">
         Вантажники для квартирних і офісних переїздів, підйому меблів, техніки та
         будівельних матеріалів у Вінниці. Працюємо акуратно, приїжджаємо в узгоджений час
         і підбираємо транспорт лише тоді, коли він справді потрібен.
       </Typography>
 
-      <ul className="mt-6 flex flex-col gap-3 md:mt-8">
+      <ul className="mt-6 flex flex-col gap-3 md:mt-8 short:mt-5 short:gap-2.5">
         {BENEFITS.map((benefit) => (
           <li key={benefit.text} className="flex items-center gap-3">
             <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-border-default bg-surface-elevated/70 ring-1 ring-inset ring-primary/10 backdrop-blur-sm">
@@ -137,7 +137,7 @@ function HeroContent() {
         <HeroDashboard />
       </div>
 
-      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4">
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4 short:mt-7">
         <a
           href={`#${siteConfig.orderFormSectionId}`}
           className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full gap-2 sm:w-auto")}
@@ -186,39 +186,35 @@ export function Hero() {
 
   return (
     <Section
-      spacing="default"
-      // Desktop-only: tighten the gap below the sticky Header (96px felt too
-      // loose) without touching bottom spacing or the mobile/tablet tiers —
-      // reuses the existing "compact" desktop token (64px) for just
-      // padding-top; padding-bottom is re-pinned explicitly to the
-      // "default" tier's value since overriding py- with pt- would
-      // otherwise drop the whole shorthand, bottom included.
-      className="relative overflow-hidden bg-linear-to-b from-background-primary to-background-secondary lg:pt-section-compact-desktop lg:pb-section-default-desktop"
+      spacing="compact"
+      fill
+      className="relative overflow-hidden bg-linear-to-b from-background-primary to-background-secondary"
     >
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-radial from-primary/10 via-transparent to-transparent"
       />
 
-      <Container size="wide" className="relative min-[1440px]:max-w-[1320px]">
+      <Container size="wide" className="relative">
         <motion.div
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          // One consistent desktop column model from `lg` up: a bounded
-          // 440px supporting column (sized for the status card's actual
-          // content, not an equal-width placeholder for a future visual),
-          // not a breakpoint-dependent switch.
-          className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_440px] lg:items-end lg:gap-16"
+          // Desktop: two equal-height columns — copy on the left; van +
+          // status card on the right, aligned to the copy's top and bottom.
+          className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.85fr)] lg:items-stretch lg:gap-12 xl:gap-16"
         >
-          <motion.div variants={itemVariants}>
+          <motion.div variants={itemVariants} className="lg:flex lg:flex-col lg:justify-center">
             <HeroContent />
           </motion.div>
 
           <motion.div variants={itemVariants} className="hidden lg:flex lg:flex-col lg:gap-4">
-            {/* Decorative van bleeds left into the empty space beside the copy;
-                the dashboard keeps its 440px column width. */}
-            <HeroVan className="-ml-20 w-[calc(100%+5rem)] xl:-ml-32 xl:w-[calc(100%+8rem)]" />
+            {/* The van fills whatever height the copy leaves above the card
+                (absolutely positioned SVG, so it never stretches the row)
+                and bleeds slightly left into the empty space. */}
+            <div className="relative min-h-[260px] flex-1 lg:-ml-10 xl:-ml-20">
+              <HeroVan className="absolute inset-0" />
+            </div>
             <HeroDashboard />
           </motion.div>
         </motion.div>

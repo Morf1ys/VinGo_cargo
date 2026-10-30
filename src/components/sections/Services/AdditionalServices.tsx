@@ -24,7 +24,7 @@ export function AdditionalServices() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={variants}
-      className="mt-12 border-t border-border-default/60 pt-8 md:mt-14 md:pt-10"
+      className="mt-12 border-t border-border-default/60 pt-8 md:mt-12 md:pt-10 lg:mt-10 lg:pt-8 short:mt-5 short:pt-4"
     >
       <Typography as="h3" variant="h4" weight="semibold" className="text-center">
         Також допоможемо з
@@ -37,7 +37,7 @@ export function AdditionalServices() {
           max-width keeps every label comfortably on one line — a la carte
           wrapping only happens between items, never inside a label — and
           collapses toward a centered, narrower cluster on smaller screens. */}
-      <ul className="mx-auto mt-6 flex max-w-[860px] flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <ul className="mx-auto mt-6 flex max-w-[54rem] flex-wrap items-center justify-center gap-x-8 gap-y-3">
         {ADDITIONAL_SERVICES.map((service) => (
           <li
             key={service.id}

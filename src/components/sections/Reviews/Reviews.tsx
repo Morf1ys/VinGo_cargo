@@ -9,10 +9,10 @@ const REVIEWS_SECTION_ID = "reviews";
 
 export function Reviews() {
   return (
-    <Section id={REVIEWS_SECTION_ID} spacing="default" className="bg-background-primary">
-      <Container size="wide" className="min-[1440px]:max-w-[1320px]">
+    <Section id={REVIEWS_SECTION_ID} spacing="compact" fill className="bg-background-secondary">
+      <Container size="wide">
         <ReviewsHeader />
-        <div className="mx-auto mt-12 w-full max-w-[860px] md:mt-14">
+        <div className="mx-auto mt-12 w-full max-w-[54rem] md:mt-14 short:mt-8">
           <ReviewsCarousel />
         </div>
       </Container>

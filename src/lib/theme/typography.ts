@@ -106,10 +106,10 @@ export const typeScale = {
   // `uppercase` utility), not part of the token itself.
   overline: {
     fontFamily: fontFamily.sans,
-    fontSize: fontSize.xs,
+    fontSize: fontSize.sm,
     fontWeight: fontWeight.semibold,
     lineHeight: lineHeight.normal,
-    letterSpacing: letterSpacing.wide,
+    letterSpacing: "0.16em",
   },
 } as const;
 

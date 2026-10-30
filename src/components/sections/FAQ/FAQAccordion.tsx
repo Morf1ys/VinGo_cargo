@@ -25,7 +25,7 @@ export function FAQAccordion() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={variants}
-      className="mt-10 overflow-hidden rounded-md border border-border-default/60 bg-white/[0.02] backdrop-blur-sm md:mt-12"
+      className="mt-10 overflow-hidden rounded-md border border-border-default/60 bg-white/[0.02] backdrop-blur-sm md:mt-12 lg:mt-0"
     >
       <ul className="divide-y divide-border-default/60">
         {FAQ_ITEMS.map((item) => (

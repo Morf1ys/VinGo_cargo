@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Desktop screens with little vertical room (e.g. MacBook 1440×900 with
+   browser chrome) — used to tighten full-screen sections so they fit. */
+@custom-variant short (@media (min-width: 64rem) and (max-height: 860px));
+
 :root {
   --background: #0a0a0b;
   --foreground: #f4f4f5;
@@ -23,9 +27,14 @@
   --vingo-color-danger: #d65b5b;
 
   /* Content widths — mirrored from src/lib/theme/layout.ts (contentWidth). */
-  --vingo-container-narrow: 640px;
-  --vingo-container-default: 768px;
-  --vingo-container-wide: 960px;
+  /* rem-based so they grow with the large-screen root scale below. */
+  --vingo-container-narrow: 40rem;
+  --vingo-container-default: 48rem;
+  --vingo-container-wide: 82.5rem;
+
+  /* Sticky header height (72px bar + 1px border) — used for full-screen
+     sections and anchor scroll offset. */
+  --vingo-header-height: 73px;
 
   /* Responsive gutters — mirrored from src/lib/theme/layout.ts (gutter). */
   --vingo-gutter-mobile: 16px;
@@ -145,9 +154,9 @@
   --text-caption: 0.75rem;
   --text-caption--line-height: 1.5;
   --text-caption--letter-spacing: 0.02em;
-  --text-overline: 0.75rem;
+  --text-overline: 0.875rem;
   --text-overline--line-height: 1.5;
-  --text-overline--letter-spacing: 0.02em;
+  --text-overline--letter-spacing: 0.16em;
 }
 
 body {
@@ -160,4 +169,18 @@ body {
   html {
     scroll-behavior: smooth;
   }
+}
+
+/* Large desktop screens (1920×1080 and up): scale the whole rem-based
+   layout ~12.5% so content doesn't look undersized. Skipped on short
+   screens, where the extra height wouldn't fit one screen per section. */
+@media (min-width: 1680px) and (min-height: 940px) {
+  html {
+    font-size: 112.5%;
+  }
+}
+
+/* Anchor jumps land below the sticky header instead of under it. */
+html {
+  scroll-padding-top: var(--vingo-header-height);
 }

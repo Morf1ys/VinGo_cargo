@@ -9,9 +9,9 @@ export const containerWidth = {
 } as const;
 
 export const contentWidth = {
-  narrow: "640px",
-  default: "768px",
-  wide: "960px",
+  narrow: "40rem",
+  default: "48rem",
+  wide: "82.5rem",
 } as const;
 
 /**

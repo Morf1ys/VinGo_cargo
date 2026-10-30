@@ -25,7 +25,7 @@ export function FeaturedServices() {
   };
 
   return (
-    <div className="relative mt-10 md:mt-12">
+    <div className="relative mt-10 md:mt-12 lg:mt-10 short:mt-6">
       {/* Restrained local glow behind the featured grid only — not a
           section-wide gradient, kept low-opacity so card text contrast is
           unaffected. */}
@@ -41,10 +41,10 @@ export function FeaturedServices() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={containerVariants}
-        className="grid grid-cols-1 gap-6 md:grid-cols-2"
+        className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5 xl:gap-6"
       >
         {FEATURED_SERVICES.map((service) => (
-          <motion.div key={service.id} variants={itemVariants}>
+          <motion.div key={service.id} variants={itemVariants} className="h-full">
             <FeaturedServiceCard service={service} />
           </motion.div>
         ))}

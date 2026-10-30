@@ -28,7 +28,7 @@ export function BenefitsHeader() {
         Переваги
       </Typography>
 
-      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance">
+      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance max-md:text-h2 short:mt-3">
         Чому клієнти обирають VinGo
       </Typography>
 
@@ -36,7 +36,7 @@ export function BenefitsHeader() {
           awkward wrap) — inherits the wrapper's 800px cap so the sentence
           fits on one line at desktop widths, while narrower viewports still
           constrain it naturally via the Container's own gutters. */}
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 short:mt-3">
         Надійність, пунктуальність і дбайливе ставлення важливі для нас так само, як і сам переїзд.
       </Typography>
     </motion.div>

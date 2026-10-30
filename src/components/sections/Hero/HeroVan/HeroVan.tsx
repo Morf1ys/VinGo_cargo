@@ -92,7 +92,7 @@ export function HeroVan({ className }: { className?: string }) {
     <div ref={ref} aria-hidden="true" className={cn("pointer-events-none select-none", className)}>
       <svg
         viewBox={`${v.minX} ${v.minY} ${v.width} ${v.height}`}
-        className="h-auto w-full overflow-visible"
+        className="h-full w-full overflow-visible"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"

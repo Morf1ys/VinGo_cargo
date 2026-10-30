@@ -22,17 +22,17 @@ export function HowItWorksHeader() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
       variants={variants}
-      className="mx-auto max-w-2xl text-center"
+      className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left"
     >
       <Typography as="span" variant="overline" weight="semibold" color="accent">
         Як ми працюємо
       </Typography>
 
-      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance">
+      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance max-md:text-h2 short:mt-3">
         Всього 4 прості кроки
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 lg:mx-0 short:mt-3">
         Від першої заявки до завершеного переїзду — усе беремо на себе.
       </Typography>
     </motion.div>

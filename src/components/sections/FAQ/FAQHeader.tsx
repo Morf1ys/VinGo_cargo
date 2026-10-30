@@ -22,17 +22,17 @@ export function FAQHeader() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
       variants={variants}
-      className="text-center"
+      className="text-center lg:sticky lg:top-[calc(var(--vingo-header-height)+2rem)] lg:text-left"
     >
       <Typography as="span" variant="overline" weight="semibold" color="accent">
         FAQ
       </Typography>
 
-      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance">
+      <Typography as="h2" variant="h1" weight="semibold" className="mt-5 text-balance max-md:text-h2 short:mt-3">
         Відповіді на часті запитання
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 lg:mx-0 short:mt-3">
         Все, що варто знати перед замовленням вантажників або переїзду.
       </Typography>
     </motion.div>
