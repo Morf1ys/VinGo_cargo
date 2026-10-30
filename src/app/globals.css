@@ -1,8 +1,63 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0b;
+  --foreground: #f4f4f5;
+
+  /*
+   * Semantic design tokens — mirrored from src/lib/theme/colors.ts and
+   * src/lib/theme/typography.ts. Keep both in sync when either changes.
+   */
+  --vingo-color-background-primary: #0a0a0b;
+  --vingo-color-background-secondary: #121214;
+  --vingo-color-surface-default: #17171a;
+  --vingo-color-surface-elevated: #1e1e22;
+  --vingo-color-text-primary: #f4f4f5;
+  --vingo-color-text-secondary: #9a9aa2;
+  --vingo-color-border-default: #2a2a2f;
+  --vingo-color-primary: #18a06f;
+  --vingo-color-primary-hover: #39bc89;
+  --vingo-color-primary-deep: #147d58;
+  --vingo-color-success: #3fa66e;
+  --vingo-color-warning: #d9a441;
+  --vingo-color-danger: #d65b5b;
+
+  /* Content widths — mirrored from src/lib/theme/layout.ts (contentWidth). */
+  --vingo-container-narrow: 640px;
+  --vingo-container-default: 768px;
+  --vingo-container-wide: 960px;
+
+  /* Responsive gutters — mirrored from src/lib/theme/layout.ts (gutter). */
+  --vingo-gutter-mobile: 16px;
+  --vingo-gutter-tablet: 24px;
+  --vingo-gutter-desktop: 32px;
+
+  /* Section spacing — mirrored from src/lib/theme/layout.ts (sectionSpacing). */
+  --vingo-section-none-mobile: 0px;
+  --vingo-section-none-tablet: 0px;
+  --vingo-section-none-desktop: 0px;
+  --vingo-section-compact-mobile: 40px;
+  --vingo-section-compact-tablet: 48px;
+  --vingo-section-compact-desktop: 64px;
+  --vingo-section-default-mobile: 56px;
+  --vingo-section-default-tablet: 72px;
+  --vingo-section-default-desktop: 96px;
+  --vingo-section-spacious-mobile: 64px;
+  --vingo-section-spacious-tablet: 96px;
+  --vingo-section-spacious-desktop: 128px;
+
+  /* Radius — mirrored from src/lib/theme/radius.ts. */
+  --vingo-radius-md: 12px;
+
+  /* Motion — mirrored from src/lib/theme/motion.ts (easing.standard). */
+  --vingo-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Shadow — mirrored from src/lib/theme/shadows.ts (shadows.default / shadows.glow). */
+  --vingo-shadow-card: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --vingo-shadow-glow: 0 0 24px 0 rgba(24, 160, 111, 0.22);
+
+  /* Reserved aspect ratio for the future Hero 3D visual slot. */
+  --vingo-aspect-hero-visual: 3 / 4;
 }
 
 @theme inline {
@@ -10,17 +65,99 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background-primary: var(--vingo-color-background-primary);
+  --color-background-secondary: var(--vingo-color-background-secondary);
+  --color-surface-default: var(--vingo-color-surface-default);
+  --color-surface-elevated: var(--vingo-color-surface-elevated);
+  --color-text-primary: var(--vingo-color-text-primary);
+  --color-text-secondary: var(--vingo-color-text-secondary);
+  --color-border-default: var(--vingo-color-border-default);
+  --color-primary: var(--vingo-color-primary);
+  --color-primary-hover: var(--vingo-color-primary-hover);
+  --color-primary-deep: var(--vingo-color-primary-deep);
+  --color-success: var(--vingo-color-success);
+  --color-warning: var(--vingo-color-warning);
+  --color-danger: var(--vingo-color-danger);
+
+  /* Maps to Tailwind's max-w-* utilities (max-w-narrow, max-w-default, max-w-wide). */
+  --container-narrow: var(--vingo-container-narrow);
+  --container-default: var(--vingo-container-default);
+  --container-wide: var(--vingo-container-wide);
+
+  /* Maps to Tailwind's px-* utilities (px-gutter-mobile, px-gutter-tablet, px-gutter-desktop). */
+  --padding-gutter-mobile: var(--vingo-gutter-mobile);
+  --padding-gutter-tablet: var(--vingo-gutter-tablet);
+  --padding-gutter-desktop: var(--vingo-gutter-desktop);
+
+  /* Maps to Tailwind's py-* utilities, applied responsively in Section.tsx
+     (e.g. py-section-compact-mobile md:py-section-compact-tablet lg:py-section-compact-desktop). */
+  --padding-section-none-mobile: var(--vingo-section-none-mobile);
+  --padding-section-none-tablet: var(--vingo-section-none-tablet);
+  --padding-section-none-desktop: var(--vingo-section-none-desktop);
+  --padding-section-compact-mobile: var(--vingo-section-compact-mobile);
+  --padding-section-compact-tablet: var(--vingo-section-compact-tablet);
+  --padding-section-compact-desktop: var(--vingo-section-compact-desktop);
+  --padding-section-default-mobile: var(--vingo-section-default-mobile);
+  --padding-section-default-tablet: var(--vingo-section-default-tablet);
+  --padding-section-default-desktop: var(--vingo-section-default-desktop);
+  --padding-section-spacious-mobile: var(--vingo-section-spacious-mobile);
+  --padding-section-spacious-tablet: var(--vingo-section-spacious-tablet);
+  --padding-section-spacious-desktop: var(--vingo-section-spacious-desktop);
+
+  /* Maps to Tailwind's rounded-md utility. */
+  --radius-md: var(--vingo-radius-md);
+
+  /* Maps to Tailwind's ease-standard utility. */
+  --ease-standard: var(--vingo-ease-standard);
+
+  /* Maps to Tailwind's shadow-card utility. */
+  --shadow-card: var(--vingo-shadow-card);
+
+  /* Maps to Tailwind's shadow-glow utility. */
+  --shadow-glow: var(--vingo-shadow-glow);
+
+  /* Maps to Tailwind's aspect-hero-visual utility. */
+  --aspect-hero-visual: var(--vingo-aspect-hero-visual);
+
+  /* Semantic type scale — mirrored from src/lib/theme/typography.ts. */
+  --text-display: 3.75rem;
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+  --text-h1: 2.25rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: 1.875rem;
+  --text-h2--line-height: 1.25;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: 1.25rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: 0em;
+  --text-h4: 1.125rem;
+  --text-h4--line-height: 1.25;
+  --text-h4--letter-spacing: 0em;
+  --text-body: 1rem;
+  --text-body--line-height: 1.65;
+  --text-body--letter-spacing: 0em;
+  --text-body-small: 0.875rem;
+  --text-body-small--line-height: 1.5;
+  --text-body-small--letter-spacing: 0em;
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.02em;
+  --text-overline: 0.75rem;
+  --text-overline--line-height: 1.5;
+  --text-overline--letter-spacing: 0.02em;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }

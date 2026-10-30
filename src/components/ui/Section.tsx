@@ -1,0 +1,44 @@
+import { createElement } from "react";
+import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+const sectionVariants = cva("", {
+  variants: {
+    spacing: {
+      none: "py-section-none-mobile md:py-section-none-tablet lg:py-section-none-desktop",
+      compact:
+        "py-section-compact-mobile md:py-section-compact-tablet lg:py-section-compact-desktop",
+      default:
+        "py-section-default-mobile md:py-section-default-tablet lg:py-section-default-desktop",
+      spacious:
+        "py-section-spacious-mobile md:py-section-spacious-tablet lg:py-section-spacious-desktop",
+    },
+  },
+  defaultVariants: {
+    spacing: "default",
+  },
+});
+
+export interface SectionProps
+  extends HTMLAttributes<HTMLElement>,
+    VariantProps<typeof sectionVariants> {
+  as?: ElementType;
+  children: ReactNode;
+}
+
+export function Section({
+  as = "section",
+  spacing,
+  className,
+  children,
+  ...props
+}: SectionProps) {
+  const resolvedSpacing = spacing ?? "default";
+
+  return createElement(
+    as,
+    { className: cn(sectionVariants({ spacing: resolvedSpacing }), className), ...props },
+    children,
+  );
+}

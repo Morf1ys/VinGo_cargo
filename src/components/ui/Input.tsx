@@ -1,0 +1,132 @@
+import { useId } from "react";
+import type { InputHTMLAttributes, ReactNode, Ref } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
+
+// Autofill override mirrors --color-surface-default / --color-text-primary so
+// Chrome's yellow autofill fill doesn't break the dark surface; the long
+// transition delay keeps the override applied after the field is touched.
+const AUTOFILL_OVERRIDE =
+  "[&:-webkit-autofill]:[-webkit-text-fill-color:var(--color-text-primary)] [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0px_1000px_var(--color-surface-default)_inset] [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s]";
+
+const inputVariants = cva(
+  `w-full rounded-md border bg-black/30 text-text-primary placeholder:text-text-secondary shadow-[inset_0_2px_4px_0_rgba(0,0,0,0.45)] transition-[border-color,background-color,box-shadow] duration-200 ease-standard motion-reduce:transition-none hover:border-white/15 focus-visible:border-primary focus-visible:bg-black/40 focus-visible:shadow-[inset_0_1px_3px_0_rgba(0,0,0,0.3)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary disabled:cursor-not-allowed disabled:opacity-50 ${AUTOFILL_OVERRIDE}`,
+  {
+    variants: {
+      size: {
+        sm: "h-9 px-3 text-body-small",
+        md: "h-10 px-4 text-body",
+        lg: "h-12 px-4 text-body",
+      },
+      invalid: {
+        true: "border-danger bg-danger/5 focus-visible:border-danger focus-visible:ring-danger",
+        false: "border-white/10",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+      invalid: false,
+    },
+  },
+);
+
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "color">,
+    VariantProps<typeof inputVariants> {
+  label?: string;
+  helperText?: string;
+  error?: string;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  ref?: Ref<HTMLInputElement>;
+}
+
+export function Input({
+  type = "text",
+  size,
+  label,
+  helperText,
+  error,
+  leftIcon,
+  rightIcon,
+  disabled,
+  required,
+  id,
+  className,
+  ref,
+  ...props
+}: InputProps) {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const helperId = `${inputId}-helper`;
+  const errorId = `${inputId}-error`;
+  const isInvalid = Boolean(error);
+  const resolvedSize = size ?? "md";
+
+  const describedBy =
+    [error ? errorId : null, helperText ? helperId : null].filter(Boolean).join(" ") ||
+    undefined;
+
+  return (
+    <div className="w-full">
+      {label && (
+        <label htmlFor={inputId} className="mb-2 block text-body-small font-medium text-text-primary">
+          {label}
+          {required && (
+            <span className="text-danger" aria-hidden="true">
+              {" "}
+              *
+            </span>
+          )}
+        </label>
+      )}
+
+      <div className="relative">
+        {leftIcon && (
+          <span
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary"
+            aria-hidden="true"
+          >
+            {leftIcon}
+          </span>
+        )}
+
+        <input
+          ref={ref}
+          id={inputId}
+          type={type}
+          disabled={disabled}
+          required={required}
+          aria-invalid={isInvalid}
+          aria-describedby={describedBy}
+          className={cn(
+            inputVariants({ size: resolvedSize, invalid: isInvalid }),
+            leftIcon && "pl-9",
+            rightIcon && "pr-9",
+            className,
+          )}
+          {...props}
+        />
+
+        {rightIcon && (
+          <span
+            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-text-secondary"
+            aria-hidden="true"
+          >
+            {rightIcon}
+          </span>
+        )}
+      </div>
+
+      {error ? (
+        <p id={errorId} className="mt-2 text-body-small text-danger">
+          {error}
+        </p>
+      ) : helperText ? (
+        <p id={helperId} className="mt-2 text-body-small text-text-secondary">
+          {helperText}
+        </p>
+      ) : null}
+    </div>
+  );
+}

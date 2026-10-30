@@ -1,65 +1,69 @@
-import Image from "next/image";
+import { Benefits } from "@/components/sections/Benefits";
+import { FAQ } from "@/components/sections/FAQ";
+import { Hero } from "@/components/sections/Hero";
+import { HowItWorks } from "@/components/sections/HowItWorks";
+import { Reviews } from "@/components/sections/Reviews";
+import { Services } from "@/components/sections/Services";
+import { Container } from "@/components/ui/Container";
+import { Section } from "@/components/ui/Section";
+import { Typography } from "@/components/ui/Typography";
+import { siteConfig } from "@/config/site";
+import { OrderForm } from "@/features/order-form";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+    <main className="flex-1">
+      <Hero />
+      <Services />
+      <Benefits />
+      <HowItWorks />
+      <Section
+        id={siteConfig.orderFormSectionId}
+        spacing="default"
+        className="relative overflow-hidden bg-linear-to-b from-background-secondary to-background-primary"
+      >
+        <Container size="default" className="relative">
+          <div className="relative mx-auto max-w-[40rem]">
+            {/* Soft ambient emerald glow OUTSIDE the panel, small and close
+                to the corner — edge lighting, not a spotlight. */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -left-8 -top-8 -z-10 h-36 w-36 rounded-full bg-primary/16 blur-2xl"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+
+            {/* Base glass: nearly opaque near-black fill (subtle translucency
+                only) so the panel itself stays dark; per-side border carries
+                a faint cool-white highlight on top and a thin emerald cast
+                on the left, instead of a uniform ring around the panel. */}
+            <div className="relative overflow-hidden rounded-md border border-white/8 border-t-white/20 border-l-primary/25 bg-linear-to-br from-background-primary/88 via-background-secondary/90 to-background-primary/95 p-7 shadow-[0_30px_70px_-32px_rgba(0,0,0,0.65)] backdrop-blur-md sm:p-9">
+              {/* Internal reflection: a small, faint emerald tint tucked
+                  into the corner itself — negative z so it sits above the
+                  base fill but below the static text content — decays well
+                  before the name/service fields. */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute -left-6 -top-6 -z-10 h-28 w-28 rounded-full bg-primary/10 blur-xl"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent"
+              />
+
+              <div className="mb-7">
+                <Typography as="h2" variant="h2" weight="semibold">
+                  Залиште заявку
+                </Typography>
+                <Typography as="p" variant="body" color="secondary" className="mt-2">
+                  Опишіть завдання — ми уточнимо деталі та зорієнтуємо щодо вартості.
+                </Typography>
+              </div>
+              <OrderForm />
+            </div>
+          </div>
+        </Container>
+      </Section>
+      <Reviews />
+      <FAQ />
+    </main>
   );
 }
