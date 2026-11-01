@@ -166,7 +166,7 @@ export function MobileMenu() {
                               aria-current={isActive ? "location" : undefined}
                               className="group flex items-center gap-4 border-b border-white/[0.06] py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary"
                             >
-                              <span className="w-6 text-caption font-semibold tabular-nums text-primary/60">
+                              <span className="w-6 text-caption font-semibold tabular-nums text-primary">
                                 {String(index + 1).padStart(2, "0")}
                               </span>
                               <span

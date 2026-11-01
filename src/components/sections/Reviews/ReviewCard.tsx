@@ -14,7 +14,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
   return (
     <div
       data-testid={review.id}
-      className="relative flex h-full flex-col items-center gap-6 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-white/[0.05] via-surface-default/35 to-background-primary/85 p-8 text-center shadow-[0_20px_48px_-24px_rgba(0,0,0,0.55)] backdrop-blur-md sm:p-10 md:p-12 short:gap-5 short:p-9"
+      className="relative flex h-full flex-col items-center gap-6 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-white/[0.05] via-surface-default/35 to-background-primary/85 p-8 text-center shadow-[0_20px_48px_-24px_rgba(0,0,0,0.55)] backdrop-blur-md sm:p-10 md:p-12 short:gap-5 short:p-9 tight:gap-4 tight:p-7"
     >
       <div
         aria-hidden="true"

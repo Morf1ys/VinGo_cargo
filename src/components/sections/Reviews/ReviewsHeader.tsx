@@ -32,7 +32,7 @@ export function ReviewsHeader() {
         Люди, яким ми допомогли з переїздом
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 short:mt-3">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 short:mt-3 tight:hidden">
         Кожен переїзд — інша історія. Ось декілька з них, розказаних нашими клієнтами з Вінниці.
       </Typography>
     </motion.div>

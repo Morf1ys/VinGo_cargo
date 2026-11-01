@@ -87,7 +87,7 @@ const SECTIONS: readonly PolicySection[] = [
 
 export default function PrivacyPage() {
   return (
-    <main className="flex-1">
+    <main id="main" className="flex-1">
       <Section spacing="default" className="relative overflow-hidden bg-background-primary">
         <div
           aria-hidden="true"

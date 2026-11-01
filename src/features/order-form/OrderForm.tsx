@@ -162,7 +162,7 @@ export function OrderForm() {
               <label
                 key={option.value}
                 className={cn(
-                  "group flex cursor-pointer items-center gap-3 rounded-md border px-4 py-3 transition-[border-color,background-color,box-shadow] duration-150 ease-standard motion-reduce:transition-none focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-primary",
+                  "group flex min-w-0 cursor-pointer items-center gap-3 rounded-md border px-4 py-3 lg:max-xl:px-3 transition-[border-color,background-color,box-shadow] duration-150 ease-standard motion-reduce:transition-none focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 focus-within:ring-offset-background-primary",
                   isSelected
                     ? "border-primary bg-primary/[0.07] shadow-[0_0_0_1px_rgba(24,160,111,0.2),0_4px_14px_-8px_rgba(24,160,111,0.35)]"
                     : "border-border-default bg-surface-default/40 hover:border-primary/30 hover:bg-surface-default",
@@ -172,7 +172,7 @@ export function OrderForm() {
 
                 <span
                   className={cn(
-                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-md border transition-[color,background-color,border-color,box-shadow] duration-150 ease-standard motion-reduce:transition-none",
+                    "flex h-9 w-9 shrink-0 items-center justify-center rounded-md border lg:max-xl:hidden transition-[color,background-color,border-color,box-shadow] duration-150 ease-standard motion-reduce:transition-none",
                     isSelected
                       ? "border-primary/30 bg-primary/15 text-primary"
                       : "border-border-default bg-surface-elevated text-text-secondary group-hover:text-primary",
@@ -181,7 +181,7 @@ export function OrderForm() {
                   <Icon className="h-4 w-4" aria-hidden="true" />
                 </span>
 
-                <Typography as="span" variant="bodySmall" weight={isSelected ? "semibold" : "medium"}>
+                <Typography as="span" variant="bodySmall" weight={isSelected ? "semibold" : "medium"} className="min-w-0">
                   {option.label}
                 </Typography>
               </label>

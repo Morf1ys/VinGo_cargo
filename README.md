@@ -8,8 +8,8 @@ submissions, Telegram, and Viber contacts.
 
 ## Current Status
 
-Project foundation only. No design or website sections have been built yet.
-See `PROJECT.md` for the current development phase.
+Landing page is complete and being prepared for launch. See `PROJECT.md`
+for the phase overview and `docs/DECISIONS.md` for approved decisions.
 
 ## Local Development
 
@@ -29,7 +29,7 @@ npm run start    # run the production build
 - Tailwind CSS 4
 - `clsx`, `tailwind-merge`, `class-variance-authority`
 - `lucide-react`
-- `motion`, `gsap`, `lenis`
+- `motion`
 - `react-hook-form`, `zod`, `@hookform/resolvers`
 
 ## Important Project Documents
@@ -40,3 +40,14 @@ npm run start    # run the production build
   instructions.
 - [`AGENTS.md`](./AGENTS.md) — agent workflow and Next.js version guidance.
 - [`docs/DECISIONS.md`](./docs/DECISIONS.md) — approved decisions log.
+
+## Environment Variables
+
+Copy `.env.example` to `.env.local` for local development and set the same
+variables in the hosting dashboard for deploys:
+
+| Variable | Purpose |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | Bot that delivers order-form submissions |
+| `TELEGRAM_CHAT_ID` | Chat/group ID(s) that receive orders (comma-separated) |
+| `NEXT_PUBLIC_SITE_URL` | Production URL without trailing slash — canonical, sitemap, social previews |

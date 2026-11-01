@@ -107,7 +107,7 @@ export function Footer() {
                 </Typography>
               </span>
               <Typography as="span" variant="bodySmall" color="secondary">
-                Вінниця та область
+                {siteConfig.serviceArea}
               </Typography>
             </div>
           </div>

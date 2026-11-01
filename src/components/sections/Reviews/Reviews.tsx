@@ -12,7 +12,7 @@ export function Reviews() {
     <Section id={REVIEWS_SECTION_ID} spacing="compact" fill className="bg-background-secondary">
       <Container size="wide">
         <ReviewsHeader />
-        <div className="mx-auto mt-12 w-full max-w-[54rem] md:mt-14 short:mt-8">
+        <div className="mx-auto mt-12 w-full max-w-[54rem] md:mt-14 short:mt-8 tight:mt-6">
           <ReviewsCarousel />
         </div>
       </Container>

@@ -32,7 +32,7 @@ export function HowItWorksHeader() {
         Всього 4 прості кроки
       </Typography>
 
-      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 lg:mx-0 short:mt-3">
+      <Typography as="p" variant="body" color="secondary" className="mx-auto mt-5 lg:mx-0 short:mt-3 tight:hidden">
         Від першої заявки до завершеного переїзду — усе беремо на себе.
       </Typography>
     </motion.div>

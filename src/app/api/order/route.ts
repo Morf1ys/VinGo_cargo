@@ -27,6 +27,40 @@ function buildMessage(order: ReturnType<typeof orderFormSchema.parse>): string {
   return lines.join("\n");
 }
 
+// Best-effort anti-spam: at most RATE_LIMIT orders per IP per window. Kept
+// in memory, so it resets on redeploy and is per server instance — enough
+// to stop a bot from flooding the Telegram chat, not a hard guarantee.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const recentOrders = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (recentOrders.get(ip) ?? []).filter((time) => now - time < RATE_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT) {
+    recentOrders.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  recentOrders.set(ip, recent);
+
+  // Keep the map from growing forever.
+  if (recentOrders.size > 5000) {
+    for (const [key, times] of recentOrders) {
+      if (times.every((time) => now - time >= RATE_WINDOW_MS)) recentOrders.delete(key);
+    }
+  }
+  return false;
+}
+
+function clientIp(request: Request): string {
+  return (
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    request.headers.get("x-real-ip") ||
+    "unknown"
+  );
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -54,6 +88,10 @@ export async function POST(request: Request) {
       { ok: false, error: "validation", issues: parsed.error.flatten().fieldErrors },
       { status: 400 },
     );
+  }
+
+  if (isRateLimited(clientIp(request))) {
+    return Response.json({ ok: false, error: "rate_limited" }, { status: 429 });
   }
 
   try {

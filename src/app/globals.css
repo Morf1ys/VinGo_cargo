@@ -4,6 +4,10 @@
    browser chrome) — used to tighten full-screen sections so they fit. */
 @custom-variant short (@media (min-width: 64rem) and (max-height: 860px));
 
+/* Even shorter desktop screens (1366×768 / 1280×720 laptops, ~650px of
+   viewport): secondary duplicates are hidden so each section still fits. */
+@custom-variant tight (@media (min-width: 64rem) and (max-height: 720px));
+
 :root {
   --background: #0a0a0b;
   --foreground: #f4f4f5;

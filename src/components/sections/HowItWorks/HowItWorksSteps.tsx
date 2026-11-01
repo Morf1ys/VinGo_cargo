@@ -32,7 +32,7 @@ export function HowItWorksSteps() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
       variants={containerVariants}
-      className="mx-auto mt-10 flex max-w-xl flex-col md:mt-12 lg:mx-0 short:mt-7"
+      className="mx-auto mt-10 flex max-w-xl flex-col md:mt-12 lg:mx-0 short:mt-7 tight:mt-5"
     >
       {STEPS.map((step, index) => (
         <motion.li key={step.id} variants={itemVariants}>

@@ -172,6 +172,7 @@ export function HeroVan({ className }: { className?: string }) {
               strokeOpacity={lane.opacity}
               strokeWidth={2}
               strokeDasharray={LANE_DASH.join(" ")}
+              initial={{ strokeDashoffset: 0 }}
               animate={loop ? { strokeDashoffset: [0, -LANE_PERIOD] } : { strokeDashoffset: 0 }}
               transition={loop ? { duration: 1.6, ease: "linear", repeat: Infinity } : { duration: 0 }}
             />

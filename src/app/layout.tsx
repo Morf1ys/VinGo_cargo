@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 const TITLE = "Вантажники у Вінниці — квартирні та офісні переїзди | VinGo";
 const DESCRIPTION =
-  "Вантажники у Вінниці 24/7: квартирні й офісні переїзди, перенесення меблів і техніки, вантажне таксі. Приїзд від 30 хв. Тел. 097 336 37 33.";
+  "Вантажники у Вінниці та області 24/7: квартирні й офісні переїзди, перенесення меблів і техніки, вантажне таксі. Приїзд від 30 хв. Тел. 097 336 37 33.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -63,6 +63,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        {/* Keyboard users: first Tab stop jumps straight past the header. */}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-body-small focus:font-semibold focus:text-background-primary"
+        >
+          Перейти до вмісту
+        </a>
         <Header />
         {children}
         <Footer />

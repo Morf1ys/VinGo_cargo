@@ -92,7 +92,7 @@ export function ReviewsCarousel() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-8 flex items-center justify-center gap-5 sm:mt-10 short:mt-6">
+      <div className="mt-8 flex items-center justify-center gap-5 sm:mt-10 short:mt-6 tight:mt-4">
         <button
           type="button"
           onClick={goPrev}

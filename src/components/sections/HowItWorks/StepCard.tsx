@@ -30,12 +30,12 @@ export function StepCard({ step, isLast = false }: StepCardProps) {
         )}
       </div>
 
-      <div className={cn("flex min-w-0 flex-col gap-1 pt-1", !isLast && "pb-8 short:pb-5")}>
-        <span className="text-caption font-semibold text-primary/60">{step.number}</span>
+      <div className={cn("flex min-w-0 flex-col gap-1 pt-1", !isLast && "pb-8 short:pb-5 tight:pb-3")}>
+        <span className="text-caption font-semibold text-primary">{step.number}</span>
         <Typography as="h3" variant="h3" weight="semibold">
           {step.title}
         </Typography>
-        <Typography as="p" variant="body" color="secondary">
+        <Typography as="p" variant="body" color="secondary" className="tight:text-body-small">
           {step.description}
         </Typography>
       </div>

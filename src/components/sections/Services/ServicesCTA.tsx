@@ -25,7 +25,7 @@ export function ServicesCTA() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.4 }}
       variants={variants}
-      className="relative mt-14 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-background-primary/75 via-background-secondary/65 to-background-primary/90 p-8 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.55)] backdrop-blur-lg sm:p-10 md:mt-12 lg:mt-8 lg:px-10 lg:py-8 short:mt-6 short:py-5"
+      className="relative mt-14 overflow-hidden rounded-md border border-white/8 border-t-white/14 bg-linear-to-br from-background-primary/75 via-background-secondary/65 to-background-primary/90 p-8 shadow-[0_20px_45px_-28px_rgba(0,0,0,0.55)] backdrop-blur-lg sm:p-10 md:mt-12 lg:mt-8 lg:px-10 lg:py-8 short:mt-6 short:py-5 tight:hidden"
     >
       <div
         aria-hidden="true"

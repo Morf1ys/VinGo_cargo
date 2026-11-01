@@ -25,7 +25,7 @@ export function FAQItem({ item, isOpen, onToggle }: FAQItemProps) {
           onClick={onToggle}
           aria-expanded={isOpen}
           aria-controls={panelId}
-          className="group flex w-full items-center justify-between gap-4 rounded-sm px-5 py-5 text-left short:py-4 transition-colors duration-150 ease-standard hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary sm:px-6 sm:py-6"
+          className="group flex w-full items-center justify-between gap-4 rounded-sm px-5 py-5 text-left short:py-4 tight:py-3 transition-colors duration-150 ease-standard hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary sm:px-6 sm:py-6"
         >
           <Typography
             as="span"

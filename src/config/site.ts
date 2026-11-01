@@ -5,13 +5,14 @@ export const siteConfig = {
   // social previews and structured data.
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
   city: "Вінниця",
+  serviceArea: "Вінниця та область",
   phone: {
     display: "+38 (097) 336-37-33",
     href: "tel:+380973363733",
   },
   telegram: {
-    display: "@MorFiyss",
-    href: "https://t.me/MorFiyss",
+    display: "@VinGo_Cargo",
+    href: "https://t.me/VinGo_Cargo",
   },
   viber: {
     display: "+38 (097) 336-37-33",
