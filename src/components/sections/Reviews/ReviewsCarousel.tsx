@@ -95,7 +95,7 @@ export function ReviewsCarousel() {
           <ChevronLeft className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
         </button>
 
-        <div className="flex items-center gap-2" role="group" aria-label="Вибір відгуку">
+        <div className="flex items-center" role="group" aria-label="Вибір відгуку">
           {REVIEWS.map((review, dotIndex) => (
             <button
               key={review.id}
@@ -103,11 +103,16 @@ export function ReviewsCarousel() {
               onClick={() => goToDot(dotIndex)}
               aria-label={`Показати відгук ${dotIndex + 1} з ${REVIEWS.length}`}
               aria-current={dotIndex === index ? "true" : undefined}
-              className={cn(
-                "h-2 rounded-full transition-all duration-300 ease-standard motion-reduce:transition-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary",
-                dotIndex === index ? "w-6 bg-primary" : "w-2 bg-white/20 hover:bg-white/35",
-              )}
-            />
+              className="group inline-flex h-11 min-w-6 items-center justify-center px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary rounded-full"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "block h-2 rounded-full transition-all duration-300 ease-standard motion-reduce:transition-none",
+                  dotIndex === index ? "w-6 bg-primary" : "w-2 bg-white/20 group-hover:bg-white/35",
+                )}
+              />
+            </button>
           ))}
         </div>
 

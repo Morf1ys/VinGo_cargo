@@ -1,7 +1,12 @@
 export const siteConfig = {
   name: "VinGo",
   // Set NEXT_PUBLIC_SITE_URL to the production domain.
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, ""),
+  url: (
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "http://localhost:3000")
+  ).replace(/\/$/, ""),
   city: "Вінниця",
   serviceArea: "Вінниця та область",
   phone: {

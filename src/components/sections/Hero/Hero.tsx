@@ -192,6 +192,15 @@ export function Hero() {
     },
   };
 
+  // No opacity fade on the copy: it is the page's largest element (LCP).
+  const copyVariants = {
+    hidden: { y: shouldReduceMotion ? 0 : 16 },
+    visible: {
+      y: 0,
+      transition: { duration: duration.default, ease: easing.standard },
+    },
+  };
+
   return (
     <Section
       spacing="compact"
@@ -210,7 +219,7 @@ export function Hero() {
           variants={containerVariants}
           className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.85fr)] lg:items-stretch lg:gap-12 xl:gap-16"
         >
-          <motion.div variants={itemVariants} className="lg:flex lg:flex-col lg:justify-center">
+          <motion.div variants={copyVariants} className="lg:flex lg:flex-col lg:justify-center">
             <HeroContent />
           </motion.div>
 
