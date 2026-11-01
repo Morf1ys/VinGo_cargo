@@ -1,4 +1,3 @@
-// 8px base scale. Half-step (1) is available for fine adjustments only.
 export const base = 8;
 
 export const spacing = {

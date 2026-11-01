@@ -19,14 +19,9 @@ interface PolicySection {
   title: string;
   paragraphs?: string[];
   list?: string[];
-  /** Paragraphs rendered after the list. */
   note?: string[];
 }
 
-// Describes what the site actually does today: the form sends name, phone,
-// service and optional address/comment to the team's Telegram chat; nothing
-// is stored in a database; no analytics or advertising cookies. Update this
-// text if any of that changes (e.g. analytics or a CRM is added).
 const SECTIONS: readonly PolicySection[] = [
   {
     title: "1. Загальні положення",

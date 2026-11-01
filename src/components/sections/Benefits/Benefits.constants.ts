@@ -8,8 +8,6 @@ export interface Benefit {
   icon: LucideIcon;
 }
 
-// Six equal benefits rendered as a symmetric 3×2 grid on desktop. Order is
-// reading order: the most important trust message comes first.
 export const BENEFITS: readonly Benefit[] = [
   {
     id: "on-time",

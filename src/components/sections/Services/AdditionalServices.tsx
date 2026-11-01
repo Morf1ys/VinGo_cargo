@@ -30,13 +30,6 @@ export function AdditionalServices() {
         Також допоможемо з
       </Typography>
 
-      {/* Flex-wrap instead of a fixed-column grid: items sit adjacent to
-          each other at their natural width and wrap as a block, so the row
-          reads as one cluster (like a tag/checklist group) rather than
-          spreading evenly across wide, mostly-empty grid columns. The
-          max-width keeps every label comfortably on one line — a la carte
-          wrapping only happens between items, never inside a label — and
-          collapses toward a centered, narrower cluster on smaller screens. */}
       <ul className="mx-auto mt-6 flex max-w-[54rem] flex-wrap items-center justify-center gap-x-8 gap-y-3">
         {ADDITIONAL_SERVICES.map((service) => (
           <li

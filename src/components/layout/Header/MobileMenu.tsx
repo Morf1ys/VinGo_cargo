@@ -15,14 +15,10 @@ import { Logo } from "./Logo";
 
 const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled])';
 
-// document.body only exists on the client — these let useSyncExternalStore
-// report "mounted" as false during SSR and the first client render (so
-// hydration matches), then true right after, without a setState-in-effect.
 const subscribeNoop = () => () => {};
 const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
-// Square glass icon button shared by the open (☰) and close (✕) triggers.
 const ICON_BUTTON =
   "inline-flex h-11 w-11 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-text-primary backdrop-blur-sm transition-[color,border-color,background-color] duration-150 ease-standard hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary";
 
@@ -103,10 +99,7 @@ export function MobileMenu() {
         <Menu className="h-5 w-5" aria-hidden="true" />
       </button>
 
-      {/* Portalled to document.body: Header has backdrop-blur (backdrop-filter),
-          which establishes a new containing block for fixed-position
-          descendants — without the portal, `fixed inset-0` below would
-          resolve against Header's own 72px box instead of the viewport. */}
+      {/* Portal: the header's backdrop-filter would otherwise trap position: fixed. */}
       {mounted &&
         createPortal(
           <AnimatePresence>
@@ -123,7 +116,6 @@ export function MobileMenu() {
                 transition={{ duration: shouldReduceMotion ? 0 : duration.default, ease: easing.standard }}
                 className="fixed inset-0 z-50 overflow-hidden bg-background-primary lg:hidden"
               >
-                {/* Ambient emerald glows + faint grid — same atmosphere as the Hero. */}
                 <div aria-hidden="true" className="pointer-events-none absolute inset-0">
                   <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
                   <div className="absolute -bottom-32 -left-24 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
@@ -134,7 +126,6 @@ export function MobileMenu() {
                   ref={panelRef}
                   className="relative flex h-full flex-col overflow-y-auto px-gutter-mobile pb-[max(1.5rem,env(safe-area-inset-bottom))] md:px-gutter-tablet"
                 >
-                  {/* Top bar mirrors the header: logo left, close right. */}
                   <div className="flex h-[72px] shrink-0 items-center justify-between border-b border-white/[0.06]">
                     <Logo onNavigate={close} />
                     <button
@@ -194,7 +185,6 @@ export function MobileMenu() {
                   </nav>
 
                   <motion.div {...fade(0.4)} className="mt-auto pt-8">
-                    {/* Contact card in the site's glass-panel language. */}
                     <div className="relative overflow-hidden rounded-md border border-white/8 border-t-white/15 border-l-primary/20 bg-linear-to-br from-white/[0.05] via-surface-default/40 to-background-primary/80 p-4 backdrop-blur-md">
                       <div
                         aria-hidden="true"

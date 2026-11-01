@@ -5,7 +5,6 @@ import { duration, easing } from "@/lib/theme/motion";
 import { BenefitCard } from "./BenefitCard";
 import { BENEFITS } from "./Benefits.constants";
 
-// 1 col (mobile) → 2 cols (tablet) → symmetric 3×2 (desktop).
 export function BenefitsGrid() {
   const shouldReduceMotion = useReducedMotion();
 

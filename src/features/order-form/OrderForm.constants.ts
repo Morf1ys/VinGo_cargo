@@ -11,7 +11,6 @@ export const SERVICE_OPTIONS: ReadonlyArray<{
 
 export const AGREEMENT_TEXT = "Я погоджуюся з";
 export const AGREEMENT_LINK_TEXT = "політикою конфіденційності";
-// Privacy policy page: src/app/privacy/page.tsx.
 export const AGREEMENT_LINK_HREF = "/privacy";
 
 export const ORDER_FORM_DEFAULT_VALUES = {

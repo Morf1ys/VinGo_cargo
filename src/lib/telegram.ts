@@ -1,4 +1,4 @@
-// Server-only: reads the bot token from env. Never import from client code.
+// Server-only: reads the bot token from env.
 
 const TELEGRAM_API = "https://api.telegram.org";
 
@@ -6,11 +6,6 @@ export function escapeTelegramHtml(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-/**
- * Sends an HTML-formatted message to every chat listed in
- * TELEGRAM_CHAT_ID (comma-separated, so several managers or a group
- * can receive the same order). Throws if config is missing or any send fails.
- */
 export async function sendTelegramMessage(html: string): Promise<void> {
   const token = process.env.TELEGRAM_BOT_TOKEN;
   const chatIds = (process.env.TELEGRAM_CHAT_ID ?? "")

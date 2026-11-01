@@ -7,8 +7,6 @@ interface StepCardProps {
   isLast?: boolean;
 }
 
-// One row of the vertical timeline: glass icon marker (with the connector
-// line running down to the next step) + number, title and description.
 export function StepCard({ step, isLast = false }: StepCardProps) {
   const Icon = step.icon;
 

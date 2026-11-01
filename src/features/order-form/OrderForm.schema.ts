@@ -2,8 +2,6 @@ import { z } from "zod";
 import { SERVICE_VALUES } from "./OrderForm.constants";
 import { isValidUaPhone } from "./OrderForm.phone";
 
-// Letters (Ukrainian, Latin, Russian), spaces, hyphens and apostrophes —
-// covers names like "Ганна-Марія", "Мар'яна", "Ольга Петрівна".
 const NAME_PATTERN = /^[\p{L}\s'’ʼ-]+$/u;
 
 export const orderFormSchema = z.object({

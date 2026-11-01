@@ -30,8 +30,6 @@ export function Header() {
           <DesktopNav />
 
           <div className="hidden items-center gap-6 lg:flex">
-            {/* Call button: icon in an emerald ring + "Дзвоніть 24/7" caption
-                so it clearly reads as "tap/click to call", not as plain text. */}
             <a
               href={siteConfig.phone.href}
               aria-label={`Зателефонувати: ${siteConfig.phone.display}`}

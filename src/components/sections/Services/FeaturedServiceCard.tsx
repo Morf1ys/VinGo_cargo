@@ -14,9 +14,6 @@ export function FeaturedServiceCard({ service }: FeaturedServiceCardProps) {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/15 to-transparent"
       />
-      {/* Soft top-left reflection — physically-plausible falloff rather than
-          a directional border tint, paired with the darker bg gradient stop
-          toward the bottom-right for layered glass depth. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-6 -top-6 h-24 w-24 rounded-full bg-white/[0.04] blur-2xl"

@@ -3,20 +3,14 @@ import { Typography } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
 import { OrderForm } from "./OrderForm";
 
-// The glass panel around the order form (moved out of app/page.tsx so it can
-// sit next to the "How it works" steps).
 export function OrderFormPanel({ id, className }: { id?: string; className?: string }) {
   return (
     <div id={id} data-order-form-panel className={cn("relative w-full", className)}>
-      {/* Soft ambient emerald glow OUTSIDE the panel, small and close to the
-          corner — edge lighting, not a spotlight. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-8 -top-8 -z-10 h-36 w-36 rounded-full bg-primary/16 blur-2xl"
       />
 
-      {/* Base glass: nearly opaque near-black fill; per-side border carries a
-          faint cool-white highlight on top and a thin emerald cast on the left. */}
       <div className="relative overflow-hidden rounded-md border border-white/8 border-t-white/20 border-l-primary/25 bg-linear-to-br from-background-primary/88 via-background-secondary/90 to-background-primary/95 p-7 shadow-[0_30px_70px_-32px_rgba(0,0,0,0.65)] backdrop-blur-md sm:p-9 short:p-7 tight:p-5">
         <div
           aria-hidden="true"

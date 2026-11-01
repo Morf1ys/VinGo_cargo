@@ -2,14 +2,7 @@
 
 import { useEffect } from "react";
 
-/**
- * When the page is opened with a "#section" in the URL (from another page's
- * nav link, a shared link, a refresh), jump to that section once the client
- * has settled — the App Router's own initial scroll handling otherwise leaves
- * the page at the top. Re-applied after load in case late layout (fonts,
- * hydration) or the router moved it, and abandoned as soon as the visitor
- * scrolls on their own.
- */
+// Scrolls to #section after load — the App Router otherwise keeps the page at the top.
 export function HashScroll() {
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1));

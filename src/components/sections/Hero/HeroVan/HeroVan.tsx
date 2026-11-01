@@ -22,7 +22,6 @@ import {
   type FaceTone,
 } from "./vanGeometry";
 
-// Line colour = --color-primary-hover; light colour is a pale tint of it.
 const LINE = "var(--color-primary-hover)";
 const LIGHT = "#cdf7e4";
 const LANE_DASH = [18, 22] as const;
@@ -35,8 +34,6 @@ const FACE_FILLS: Record<Exclude<FaceTone, "side">, string> = {
   roof: "#111614",
 };
 
-// Intro timeline (seconds): grid → body draws itself → details → panels
-// solidify → headlights flash twice and stay on.
 const T = {
   body: 0.2,
   details: 1.1,
@@ -44,11 +41,6 @@ const T = {
   lights: 2.3,
 } as const;
 
-/**
- * Decorative isometric "blueprint" van for the desktop Hero. Pure SVG +
- * `motion`; no extra dependencies. Respects prefers-reduced-motion (renders
- * the finished frame, no loops) and pauses its loops when off-screen.
- */
 export function HeroVan({ className }: { className?: string }) {
   const rawId = useId();
   const id = rawId.replace(/[^a-zA-Z0-9_-]/g, "");
@@ -57,9 +49,6 @@ export function HeroVan({ className }: { className?: string }) {
   const reduce = useReducedMotion() ?? false;
   const loop = inView && !reduce;
 
-  // Headlight "flash" whenever any order CTA on the page is hovered or
-  // focused — a small reward that ties the van to the main action. Ignored
-  // until the intro has finished and throttled so it never strobes.
   const [flashCount, setFlashCount] = useState(0);
   useEffect(() => {
     if (reduce) return;
@@ -105,7 +94,6 @@ export function HeroVan({ className }: { className?: string }) {
           transition: { delay, duration: length, ease: easing.standard },
         };
 
-  // Headlights: off → two quick flashes → steady, then a very slow "breath".
   const lightIntro = { opacity: [0, 1, 0.15, 1, 0.15, 1] };
   const lightTransition = {
     delay: T.lights,
@@ -159,7 +147,6 @@ export function HeroVan({ className }: { className?: string }) {
           </filter>
         </defs>
 
-        {/* Ground: faint grid + lane markings that slowly scroll past. */}
         <motion.g mask={`url(#${id}-mask)`} {...fadeIn(0, 1)}>
           {gridPaths.map((d) => (
             <path key={d} d={d} stroke={LINE} strokeOpacity={0.07} strokeWidth={0.8} />
@@ -190,7 +177,6 @@ export function HeroVan({ className }: { className?: string }) {
           transition={reduce ? { duration: 0 } : lightTransition}
         />
 
-        {/* Van — a barely-there suspension bob sells the "driving" feel. */}
         <motion.g
           animate={loop ? { y: [0, -1.2, 0] } : { y: 0 }}
           transition={loop ? { duration: 2.4, ease: "easeInOut", repeat: Infinity } : { duration: 0 }}
@@ -241,7 +227,6 @@ export function HeroVan({ className }: { className?: string }) {
             />
           ))}
 
-          {/* Headlights: lenses + soft glow. */}
           <motion.g
             initial={reduce ? false : { opacity: 0 }}
             animate={lightIntro}

@@ -26,9 +26,6 @@ export function FeaturedServices() {
 
   return (
     <div className="relative mt-10 md:mt-12 lg:mt-10 short:mt-6">
-      {/* Restrained local glow behind the featured grid only — not a
-          section-wide gradient, kept low-opacity so card text contrast is
-          unaffected. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -z-10 flex items-center justify-center"

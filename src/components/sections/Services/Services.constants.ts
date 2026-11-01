@@ -8,8 +8,6 @@ export interface FeaturedService {
   icon: LucideIcon;
 }
 
-// Copy avoids claims not covered by PROJECT.md / docs/DECISIONS.md — no
-// fleet ownership, fixed delivery times, or guaranteed outcomes.
 export const FEATURED_SERVICES: readonly FeaturedService[] = [
   {
     id: "loaders",
@@ -53,6 +51,4 @@ export const ADDITIONAL_SERVICES: readonly AdditionalService[] = [
   { id: "waste-removal", label: "Вивіз сміття" },
 ];
 
-// Decorative bullet icon shared by every supporting-service item — visual
-// constant, not content data, so it stays out of ADDITIONAL_SERVICES.
 export const ADDITIONAL_SERVICE_ICON: LucideIcon = CircleCheck;

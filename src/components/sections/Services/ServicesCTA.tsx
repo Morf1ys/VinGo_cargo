@@ -36,9 +36,6 @@ export function ServicesCTA() {
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/15 to-transparent"
       />
 
-      {/* Capped and centered so text/button stay in a natural relationship
-          instead of stretching to the panel's full width with an empty
-          middle. */}
       <div className="mx-auto flex max-w-4xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <div>
           <Typography variant="h3" weight="semibold">

@@ -39,9 +39,6 @@ const typographyVariants = cva("", {
 
 type TypographyVariant = NonNullable<VariantProps<typeof typographyVariants>["variant"]>;
 
-// Default semantic element per variant. Pass `as` to override when page
-// context requires a different tag, so heading hierarchy stays correct —
-// `variant` only controls visual style, not document semantics.
 const defaultElement: Record<TypographyVariant, ElementType> = {
   display: "h1",
   h1: "h1",

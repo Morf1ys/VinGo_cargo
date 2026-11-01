@@ -5,8 +5,6 @@ import { duration, easing } from "@/lib/theme/motion";
 import { STEPS } from "./HowItWorks.constants";
 import { StepCard } from "./StepCard";
 
-// Vertical timeline at every size: icon markers joined by a thin emerald
-// line, each step reading left-to-right. Pairs with the order form beside it.
 export function HowItWorksSteps() {
   const shouldReduceMotion = useReducedMotion();
 

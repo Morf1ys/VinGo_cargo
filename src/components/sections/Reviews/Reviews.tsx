@@ -3,8 +3,6 @@ import { Section } from "@/components/ui/Section";
 import { ReviewsCarousel } from "./ReviewsCarousel";
 import { ReviewsHeader } from "./ReviewsHeader";
 
-// Anchor id targeted by the "Відгуки" nav item in
-// src/components/layout/Header/Header.constants.ts.
 const REVIEWS_SECTION_ID = "reviews";
 
 export function Reviews() {

@@ -23,8 +23,6 @@ import { cn } from "@/lib/utils";
 import { duration, easing } from "@/lib/theme/motion";
 import { HeroVan } from "./HeroVan/HeroVan";
 
-// Already-approved copy only (docs/DECISIONS.md, this task's own trust-indicator
-// examples) — no invented ratings, job counts, or other unverified claims.
 const BENEFITS: { icon: LucideIcon; text: string }[] = [
   { icon: UserRoundCheck, text: "Досвідчені вантажники" },
   { icon: ShieldCheck, text: "Дбайливе ставлення до майна" },
@@ -57,8 +55,6 @@ function BrandStatusRow() {
 function HeroDashboard() {
   return (
     <div className="relative">
-      {/* Restrained emerald reflection behind the upper-left edge — kept
-          lower-opacity than the OrderForm's so the widget stays secondary. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-6 -top-6 -z-10 h-2/3 w-2/3 rounded-full bg-primary/12 blur-2xl"
@@ -121,9 +117,6 @@ function HeroContent() {
         </Typography>
 
         <div className="relative mt-6 md:mt-8 short:mt-5 tight:hidden">
-          {/* Mobile/tablet: the van sits in the free space to the right of
-              the short benefit lines, fading out to the left where it slips
-              under the text. Desktop shows it in the right column instead. */}
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -right-12 top-1/2 h-40 w-56 -translate-y-1/2 opacity-70 min-[420px]:-right-6 min-[420px]:h-44 min-[420px]:w-60 [mask-image:linear-gradient(to_left,black_55%,transparent_100%)] sm:right-0 sm:h-60 sm:w-80 sm:opacity-90 lg:hidden"
@@ -145,8 +138,6 @@ function HeroContent() {
           </ul>
         </div>
 
-        {/* Dashboard renders inline here on mobile/tablet only — the desktop
-            copy renders in the grid's right column instead (Hero(), below). */}
         <div className="mt-8 lg:hidden">
           <HeroDashboard />
         </div>
@@ -217,8 +208,6 @@ export function Hero() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          // Desktop: two equal-height columns — copy on the left; van +
-          // status card on the right, aligned to the copy's top and bottom.
           className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(400px,0.85fr)] lg:items-stretch lg:gap-12 xl:gap-16"
         >
           <motion.div variants={itemVariants} className="lg:flex lg:flex-col lg:justify-center">
@@ -226,9 +215,6 @@ export function Hero() {
           </motion.div>
 
           <motion.div variants={itemVariants} className="hidden lg:flex lg:flex-col lg:gap-4">
-            {/* The van fills whatever height the copy leaves above the card
-                (absolutely positioned SVG, so it never stretches the row)
-                and bleeds slightly left into the empty space. */}
             <div className="relative min-h-[260px] flex-1 lg:-ml-10 xl:-ml-20">
               <HeroVan className="absolute inset-0" />
             </div>

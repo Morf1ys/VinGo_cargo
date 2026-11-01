@@ -14,11 +14,6 @@ export const contentWidth = {
   wide: "82.5rem",
 } as const;
 
-/**
- * Vertical section spacing, mobile-first. Mirrored as Tailwind
- * `--padding-section-*-{mobile,tablet,desktop}` theme entries in
- * src/app/globals.css — keep both in sync when changing a value here.
- */
 export const sectionSpacing = {
   none: {
     mobile: spacing[0],
@@ -31,8 +26,6 @@ export const sectionSpacing = {
     desktop: spacing[9],
   },
   default: {
-    // 56px / 72px fall between named spacing steps — derived from the same
-    // 8px base rather than hardcoded.
     mobile: `${base * 7}px`,
     tablet: `${base * 9}px`,
     desktop: spacing[11],
@@ -44,11 +37,6 @@ export const sectionSpacing = {
   },
 } as const;
 
-/**
- * Responsive horizontal container gutters. Mirrored as Tailwind `--padding-*`
- * theme entries in src/app/globals.css — keep both in sync when changing a
- * value here.
- */
 export const gutter = {
   mobile: spacing[4],
   tablet: spacing[5],

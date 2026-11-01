@@ -1,9 +1,6 @@
 import { Typography } from "@/components/ui/Typography";
 import type { Benefit } from "./Benefits.constants";
 
-// Same glass language as the Services cards (translucent surface, soft
-// blur, layered top-left reflection, thin border, restrained hover lift).
-// All six benefits are equal, so the grid reads as one calm, symmetric set.
 export function BenefitCard({ benefit }: { benefit: Benefit }) {
   const Icon = benefit.icon;
 

@@ -9,17 +9,11 @@ import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { duration, easing } from "@/lib/theme/motion";
 
-// Show once the visitor has scrolled past most of the first screen…
 const SHOW_AFTER_PX = 480;
 
 const ICON_ACTION =
   "inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-text-primary transition-[color,border-color,background-color] duration-150 ease-standard active:bg-primary/10 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary";
 
-/**
- * Mobile/tablet-only bottom bar: call, Telegram, Viber and the order CTA are
- * always one tap away. Hidden at the very top (the Hero already shows these
- * actions) and while the order form itself is on screen.
- */
 export function MobileActionBar() {
   const [scrolledEnough, setScrolledEnough] = useState(false);
   const [formVisible, setFormVisible] = useState(false);
@@ -30,7 +24,6 @@ export function MobileActionBar() {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
 
-    // …but not while the order form is visible.
     const form = document.querySelector("[data-order-form-panel]");
     const observer = form
       ? new IntersectionObserver(([entry]) => setFormVisible(entry.isIntersecting), { threshold: 0.15 })
@@ -47,7 +40,6 @@ export function MobileActionBar() {
 
   return (
     <>
-      {/* Spacer so the bar never covers the end of the footer. */}
       <div aria-hidden="true" className="h-20 lg:hidden" />
 
       <AnimatePresence>

@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-/** True once the page has scrolled past `thresholdPx`. */
 export function useScrolled(thresholdPx: number): boolean {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -16,10 +15,6 @@ export function useScrolled(thresholdPx: number): boolean {
   return isScrolled;
 }
 
-/**
- * Id of the section currently crossing the viewport midline, or null if none
- * of `sectionIds` resolve to an element on the page yet.
- */
 export function useActiveSection(sectionIds: readonly string[]): string | null {
   const [activeId, setActiveId] = useState<string | null>(null);
 

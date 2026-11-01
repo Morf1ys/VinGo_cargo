@@ -7,16 +7,11 @@ import { easing } from "@/lib/theme/motion";
 const DASH = 14;
 const GAP = 12;
 
-/**
- * Success-state flourish: the van drives in, flashes its headlight once and
- * keeps "driving" (road dashes scroll beneath it) — the order is on its way.
- */
 export function OrderSentAnimation() {
   const reduce = useReducedMotion() ?? false;
 
   return (
     <div aria-hidden="true" className="relative mx-auto h-20 w-full max-w-xs overflow-hidden">
-      {/* Road */}
       <svg className="absolute inset-x-0 bottom-3 h-px w-full overflow-visible" preserveAspectRatio="none">
         <motion.line
           x1="-40"
@@ -38,7 +33,6 @@ export function OrderSentAnimation() {
         animate={{ x: 0 }}
         transition={{ duration: 1.1, ease: easing.premium }}
       >
-        {/* Headlight glow at the front (right) of the van. */}
         <motion.span
           className="absolute right-0 top-1/2 h-6 w-10 -translate-y-1/2 translate-x-6 rounded-full bg-[#cdf7e4]/40 blur-md"
           initial={reduce ? false : { opacity: 0 }}

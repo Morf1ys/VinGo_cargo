@@ -6,10 +6,6 @@ interface ReviewCardProps {
   review: Review;
 }
 
-// Same glass surface language as BenefitCard/FeaturedServiceCard (translucent
-// gradient fill, top highlight line, soft corner reflection, thin border) —
-// only the composition differs: one large, centered, text-dominant card
-// instead of an icon-led grid tile.
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
     <div

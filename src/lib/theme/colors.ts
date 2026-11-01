@@ -1,7 +1,3 @@
-/**
- * Primitive color scales. Not for direct use in components — consume the
- * semantic `colors` export below instead.
- */
 export const neutral = {
   950: "#0A0A0B",
   900: "#121214",

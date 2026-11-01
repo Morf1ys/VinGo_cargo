@@ -14,8 +14,6 @@ const sectionVariants = cva("", {
       spacious:
         "py-section-spacious-mobile md:py-section-spacious-tablet lg:py-section-spacious-desktop",
     },
-    // Desktop only: the section fills the screen below the sticky header
-    // and centres its content, so each block reads as one "page".
     fill: {
       true: "lg:flex lg:min-h-[calc(100svh-var(--vingo-header-height))] lg:flex-col lg:justify-center short:py-10 tight:py-6",
       false: "",

@@ -27,9 +27,7 @@ function buildMessage(order: ReturnType<typeof orderFormSchema.parse>): string {
   return lines.join("\n");
 }
 
-// Best-effort anti-spam: at most RATE_LIMIT orders per IP per window. Kept
-// in memory, so it resets on redeploy and is per server instance — enough
-// to stop a bot from flooding the Telegram chat, not a hard guarantee.
+// In-memory anti-spam limit, per server instance.
 const RATE_LIMIT = 5;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const recentOrders = new Map<string, number[]>();
@@ -44,7 +42,6 @@ function isRateLimited(ip: string): boolean {
   recent.push(now);
   recentOrders.set(ip, recent);
 
-  // Keep the map from growing forever.
   if (recentOrders.size > 5000) {
     for (const [key, times] of recentOrders) {
       if (times.every((time) => now - time >= RATE_WINDOW_MS)) recentOrders.delete(key);
@@ -69,8 +66,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: false, error: "invalid_json" }, { status: 400 });
   }
 
-  // Honeypot: real users never see or fill this field. Pretend success so
-  // bots get no signal, but don't forward anything.
+  // Honeypot field: hidden from people, filled in by bots.
   if (
     typeof body === "object" &&
     body !== null &&
@@ -81,7 +77,6 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
-  // Re-validate on the server — the client check can be bypassed.
   const parsed = orderFormSchema.safeParse(body);
   if (!parsed.success) {
     return Response.json(

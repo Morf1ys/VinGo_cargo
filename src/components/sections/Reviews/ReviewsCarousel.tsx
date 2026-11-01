@@ -9,9 +9,6 @@ import { easing } from "@/lib/theme/motion";
 import { ReviewCard } from "./ReviewCard";
 import { REVIEWS } from "./Reviews.constants";
 
-// Task calls for a ~350-450ms transition — outside the fast/default/slow
-// steps in src/lib/theme/motion.ts, so a literal is used here rather than
-// stretching an existing token to fit.
 const TRANSITION_SECONDS = 0.4;
 const SLIDE_OFFSET_PX = 16;
 const SWIPE_THRESHOLD_PX = 60;
@@ -39,10 +36,6 @@ export function ReviewsCarousel() {
     goTo(targetIndex, targetIndex > index ? 1 : -1);
   };
 
-  // Plain pointer tracking (not motion's `drag` gesture) — `drag` drives the
-  // same x transform the enter/exit variants animate, and the two fight for
-  // control of that motion value across a slide swap. Reading raw pointer
-  // coordinates keeps swipe-to-navigate without touching x outside variants.
   const handlePointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     pointerStartX.current = event.clientX;
   };

@@ -6,9 +6,6 @@ export interface Review {
   location: string;
 }
 
-// Placeholder reviews (docs/DECISIONS.md phase 3 — section implementation).
-// Names are first-name + initial only, no real customers are represented.
-// To be swapped for vetted real reviews during the content/SEO phase.
 export const REVIEWS: readonly Review[] = [
   {
     id: "apartment-move",

@@ -2,9 +2,6 @@ import { ADDITIONAL_SERVICES, FEATURED_SERVICES } from "@/components/sections/Se
 import { FAQ_ITEMS } from "@/components/sections/FAQ/FAQ.constants";
 import { siteConfig } from "@/config/site";
 
-// schema.org data that helps Google understand the business: a local moving
-// company serving Vinnytsia, how to contact it, what it offers, and the FAQ.
-// Only facts already stated on the site — no ratings or reviews are marked up.
 const AREA_SERVED = [
   { "@type": "City", name: "Вінниця" },
   { "@type": "AdministrativeArea", name: "Вінницька область" },
@@ -56,7 +53,6 @@ export function StructuredData() {
         <script
           key={index}
           type="application/ld+json"
-          // JSON.stringify output is safe here; "<" is escaped to avoid </script> injection.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
         />
       ))}

@@ -3,9 +3,6 @@ import type { InputHTMLAttributes, ReactNode, Ref } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-// Autofill override mirrors --color-surface-default / --color-text-primary so
-// Chrome's yellow autofill fill doesn't break the dark surface; the long
-// transition delay keeps the override applied after the field is touched.
 const AUTOFILL_OVERRIDE =
   "[&:-webkit-autofill]:[-webkit-text-fill-color:var(--color-text-primary)] [&:-webkit-autofill]:[-webkit-box-shadow:0_0_0px_1000px_var(--color-surface-default)_inset] [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s]";
 

@@ -1,5 +1,3 @@
-// Subtle, dark-surface-appropriate elevation. `glow` is a low-opacity accent
-// halo (brand.500) for hover/focus states, not a drop shadow.
 export const shadows = {
   none: "none",
   sm: "0 1px 2px 0 rgba(0, 0, 0, 0.4)",

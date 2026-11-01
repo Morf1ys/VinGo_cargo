@@ -1,4 +1,3 @@
-// References the CSS variables registered by next/font in src/app/layout.tsx.
 export const fontFamily = {
   sans: "var(--font-geist-sans)",
   mono: "var(--font-geist-mono)",
@@ -37,14 +36,6 @@ export const letterSpacing = {
   wide: "0.02em",
 } as const;
 
-/**
- * Semantic type roles. Components should consume these instead of
- * hardcoding font-size/weight/line-height combinations.
- *
- * Mirrored as Tailwind `--text-*` theme entries in src/app/globals.css so
- * components can apply them via generated utility classes instead of inline
- * styles. Keep both in sync when changing a value here.
- */
 export const typeScale = {
   display: {
     fontFamily: fontFamily.sans,
@@ -102,8 +93,6 @@ export const typeScale = {
     lineHeight: lineHeight.normal,
     letterSpacing: letterSpacing.wide,
   },
-  // Uppercase text-transform is applied at the component level (Tailwind's
-  // `uppercase` utility), not part of the token itself.
   overline: {
     fontFamily: fontFamily.sans,
     fontSize: fontSize.sm,

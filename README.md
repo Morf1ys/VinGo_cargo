@@ -1,53 +1,42 @@
 # VinGo
 
-> Working brand name — **provisional**, may change before launch.
+Лендінг сервісу вантажників і переїздів у Вінниці та області.
+Заявки з форми надходять у Telegram-групу через бота.
 
-Website for a moving and loader services company operating in Vinnytsia,
-Ukraine. Primary goal is lead generation: phone calls, quote-form
-submissions, Telegram, and Viber contacts.
+## Стек
 
-## Current Status
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS 4
+- `motion` — анімації
+- `react-hook-form` + `zod` — форма та валідація
+- `lucide-react` — іконки
 
-Landing page is complete and being prepared for launch. See `PROJECT.md`
-for the phase overview and `docs/DECISIONS.md` for approved decisions.
-
-## Local Development
+## Запуск
 
 ```bash
-npm run dev      # start the dev server (Turbopack)
-npm run lint     # run ESLint
-npx tsc --noEmit # type-check
-npm run build    # production build
-npm run start    # run the production build
+npm install
+npm run dev      # http://localhost:3000
+npm run lint
+npm run build
+npm run start
 ```
 
-## Main Stack
+## Змінні оточення
 
-- Next.js 16 (App Router)
-- React 19
-- TypeScript (strict mode)
-- Tailwind CSS 4
-- `clsx`, `tailwind-merge`, `class-variance-authority`
-- `lucide-react`
-- `motion`
-- `react-hook-form`, `zod`, `@hookform/resolvers`
+Скопіюйте `.env.example` у `.env.local` і заповніть. На хостингу (Vercel тощо)
+ті самі змінні задаються в налаштуваннях проєкту.
 
-## Important Project Documents
-
-- [`PROJECT.md`](./PROJECT.md) — business overview, goals, services, and
-  design direction.
-- [`CLAUDE.md`](./CLAUDE.md) — project-specific coding and content
-  instructions.
-- [`AGENTS.md`](./AGENTS.md) — agent workflow and Next.js version guidance.
-- [`docs/DECISIONS.md`](./docs/DECISIONS.md) — approved decisions log.
-
-## Environment Variables
-
-Copy `.env.example` to `.env.local` for local development and set the same
-variables in the hosting dashboard for deploys:
-
-| Variable | Purpose |
+| Змінна | Призначення |
 |---|---|
-| `TELEGRAM_BOT_TOKEN` | Bot that delivers order-form submissions |
-| `TELEGRAM_CHAT_ID` | Chat/group ID(s) that receive orders (comma-separated) |
-| `NEXT_PUBLIC_SITE_URL` | Production URL without trailing slash — canonical, sitemap, social previews |
+| `TELEGRAM_BOT_TOKEN` | Токен бота, який надсилає заявки |
+| `TELEGRAM_CHAT_ID` | ID чату/групи для заявок (кілька — через кому) |
+| `NEXT_PUBLIC_SITE_URL` | Адреса сайту без `/` в кінці (SEO, sitemap, прев'ю) |
+
+## Структура
+
+- `src/app` — сторінки (`/`, `/privacy`, 404), API заявок `api/order`, SEO-файли
+- `src/components/sections` — секції головної сторінки
+- `src/components/layout` — шапка, футер, мобільне меню й панель дій
+- `src/components/ui` — базові компоненти
+- `src/features/order-form` — форма заявки
+- `src/config/site.ts` — контакти, адреса сайту, посилання

@@ -26,15 +26,12 @@ import {
 } from "./OrderForm.constants";
 import type { OrderFormValues, SubmitStatus } from "./OrderForm.types";
 
-// Decorative only — identifies the service option, not part of the form data model.
 const SERVICE_ICONS: Record<(typeof SERVICE_OPTIONS)[number]["value"], LucideIcon> = {
   loaders: UserRound,
   cargo: Truck,
   moving: Boxes,
 };
 
-// Sends the order to the server route, which re-validates it and forwards
-// it to the Telegram bot. `website` is a honeypot field for spam bots.
 async function onSubmit(values: OrderFormValues, website: string): Promise<void> {
   const response = await fetch("/api/order", {
     method: "POST",
@@ -103,7 +100,6 @@ export function OrderForm() {
 
   return (
     <form noValidate onSubmit={submitHandler} className="flex w-full flex-col gap-5">
-      {/* Honeypot — hidden from people and assistive tech, filled only by bots. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
           Website
@@ -295,10 +291,6 @@ export function OrderForm() {
         </p>
       )}
 
-      {/* Form-specific override — the shared primary Button gradient reads
-          too bright/mint for this darker glass panel, so only this instance
-          is restyled to a darker forest-green fill; the Hero CTA keeps the
-          approved shared styling untouched. */}
       <Button
         type="submit"
         size="lg"

@@ -23,9 +23,6 @@ const wordmarkVariants: Variants = {
   },
 };
 
-// Plays once on mount (page load) — no repeat, no loop, no scroll retrigger.
-// On the home page the logo scrolls back to the very top (and clears any
-// #section hash) instead of doing a no-op same-page navigation.
 export function Logo({ onNavigate }: { onNavigate?: () => void }) {
   const shouldReduceMotion = useReducedMotion();
 

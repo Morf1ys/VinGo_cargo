@@ -30,8 +30,6 @@ export function Footer() {
       spacing="compact"
       className="relative overflow-hidden border-t border-border-default/60 bg-background-primary"
     >
-      {/* Restrained ambient glow, same opacity class as Hero's dashboard
-          reflection (bg-primary/12) rather than a louder bespoke value. */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[280px] w-[640px] -translate-x-1/2 -translate-y-1/3 rounded-full bg-primary/12 blur-3xl"
@@ -45,10 +43,6 @@ export function Footer() {
           variants={variants}
           className="flex flex-col"
         >
-          {/* 1. Top CTA area — one horizontal composition, not a card. Grid
-              (not a capped max-width) so copy anchors to the Container's
-              left edge and the action block anchors to its right edge,
-              using the full Container width like the rest of the site. */}
           <div className="flex flex-col gap-3 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
             <div className="max-w-xl">
               <Typography as="span" variant="overline" weight="semibold" color="accent">
@@ -62,8 +56,6 @@ export function Footer() {
               </Typography>
             </div>
 
-            {/* Main CTA on top; call / Telegram / Viber as one row of equal
-                pills underneath, phone highlighted as the primary contact. */}
             <div className="mt-3 flex w-full shrink-0 flex-col gap-3 sm:w-auto lg:mt-0">
               <a
                 href={siteConfig.orderFormHref}
@@ -81,15 +73,6 @@ export function Footer() {
 
           <div className="my-4 h-px w-full bg-border-default/60 lg:my-8" aria-hidden="true" />
 
-          {/* 2. Lower footer area — slogan, navigation, status as one compact
-              row at desktop. No wordmark here: the top CTA area already
-              opens with the VinGo eyebrow, so repeating the full lockup
-              would be redundant. Hidden on mobile for the same reason the
-              old brand block was — this row is desktop-only composition.
-              Symmetric 1fr/auto/1fr grid (not a capped max-width) spans the
-              full Container width: equal side columns put navigation
-              visually in the row's true center, not just centered in
-              whatever space happens to be left over. */}
           <div className="flex flex-col gap-3 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:items-start lg:gap-6">
             <div className="hidden lg:block">
               <Typography as="p" variant="bodySmall" color="secondary" className="max-w-[18rem]">
@@ -112,7 +95,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* 3. Copyright row. */}
           <div className="mt-4 border-t border-border-default/60 pt-4 lg:mt-8">
             <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
               <Typography as="span" variant="caption" color="secondary">

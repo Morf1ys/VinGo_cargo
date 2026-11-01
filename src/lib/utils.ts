@@ -1,10 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { extendTailwindMerge } from "tailwind-merge";
 
-// Our custom type-scale utilities (text-h1, text-body-small, …) look like
-// colours to tailwind-merge by default, so it used to drop them whenever a
-// text colour class (text-text-primary) was present — every Typography
-// heading silently fell back to 16px. Registering them as font sizes fixes it.
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
