@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -65,7 +66,7 @@ export function Footer() {
                 pills underneath, phone highlighted as the primary contact. */}
             <div className="mt-3 flex w-full shrink-0 flex-col gap-3 sm:w-auto lg:mt-0">
               <a
-                href={`#${siteConfig.orderFormSectionId}`}
+                href={siteConfig.orderFormHref}
                 className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full")}
               >
                 Замовити вантажників
@@ -113,9 +114,17 @@ export function Footer() {
 
           {/* 3. Copyright row. */}
           <div className="mt-4 border-t border-border-default/60 pt-4 lg:mt-8">
-            <Typography as="span" variant="caption" color="secondary">
-              © 2026 VinGo
-            </Typography>
+            <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
+              <Typography as="span" variant="caption" color="secondary">
+                © 2026 VinGo
+              </Typography>
+              <Link
+                href="/privacy"
+                className="rounded-sm text-caption text-text-secondary transition-colors duration-150 ease-standard hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                Політика конфіденційності
+              </Link>
+            </div>
           </div>
         </motion.div>
       </Container>

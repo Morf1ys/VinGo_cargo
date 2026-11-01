@@ -9,7 +9,7 @@ import { MessengerLinks } from "@/components/ui/MessengerLinks";
 import { cn } from "@/lib/utils";
 import { duration, easing } from "@/lib/theme/motion";
 import { siteConfig } from "@/config/site";
-import { NAV_ITEMS, NAV_SECTION_IDS } from "./Header.constants";
+import { NAV_ITEMS, NAV_SECTION_IDS, sectionIdOf } from "./Header.constants";
 import { useActiveSection } from "./Header.hooks";
 import { Logo } from "./Logo";
 
@@ -156,7 +156,7 @@ export function MobileMenu() {
                   <nav aria-label="Основна навігація" className="mt-4">
                     <ul className="flex flex-col">
                       {NAV_ITEMS.map((item, index) => {
-                        const isActive = activeId === item.href.slice(1);
+                        const isActive = activeId === sectionIdOf(item.href);
 
                         return (
                           <motion.li key={item.href} {...fade(0.08 + index * 0.05)}>
@@ -223,7 +223,7 @@ export function MobileMenu() {
                       <MessengerLinks label="" className="mt-4 [&>a]:flex-1 [&>a]:justify-center" />
 
                       <a
-                        href={`#${siteConfig.orderFormSectionId}`}
+                        href={siteConfig.orderFormHref}
                         onClick={close}
                         className={cn(buttonVariants({ variant: "primary", size: "lg" }), "mt-3 w-full")}
                       >

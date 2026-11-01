@@ -153,7 +153,7 @@ function HeroContent() {
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:gap-4 short:mt-7">
           <a
-            href={`#${siteConfig.orderFormSectionId}`}
+            href={siteConfig.orderFormHref}
             className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full gap-2 sm:w-auto")}
           >
             Замовити зараз

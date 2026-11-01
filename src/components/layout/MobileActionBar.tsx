@@ -77,7 +77,7 @@ export function MobileActionBar() {
                 </a>
               ))}
               <a
-                href={`#${siteConfig.orderFormSectionId}`}
+                href={siteConfig.orderFormHref}
                 className={cn(buttonVariants({ variant: "primary", size: "lg" }), "h-12 flex-1 gap-2 px-4")}
               >
                 Заявка

@@ -50,7 +50,7 @@ export function ServicesCTA() {
         </div>
 
         <a
-          href={`#${siteConfig.orderFormSectionId}`}
+          href={siteConfig.orderFormHref}
           className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full shrink-0 sm:w-auto")}
         >
           Отримати консультацію

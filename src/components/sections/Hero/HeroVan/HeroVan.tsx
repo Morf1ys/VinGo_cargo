@@ -65,7 +65,7 @@ export function HeroVan({ className }: { className?: string }) {
     if (reduce) return;
     const readyAt = performance.now() + (T.lights + 1.3) * 1000;
     let lastFlash = 0;
-    const selector = `a[href="#${siteConfig.orderFormSectionId}"]`;
+    const selector = `a[href="${siteConfig.orderFormHref}"]`;
 
     const handle = (event: Event) => {
       const target = event.target;

@@ -49,7 +49,7 @@ export function Header() {
             </a>
 
             <a
-              href={`#${siteConfig.orderFormSectionId}`}
+              href={siteConfig.orderFormHref}
               className={cn(
                 buttonVariants({ variant: "primary", size: "md" }),
                 "transition-[color,background-color,border-color,box-shadow,transform] duration-150 hover:scale-[1.02] motion-reduce:hover:scale-100",

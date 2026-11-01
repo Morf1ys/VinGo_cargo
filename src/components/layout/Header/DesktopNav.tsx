@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { NAV_ITEMS, NAV_SECTION_IDS } from "./Header.constants";
+import { NAV_ITEMS, NAV_SECTION_IDS, sectionIdOf } from "./Header.constants";
 import { useActiveSection } from "./Header.hooks";
 
 export function DesktopNav() {
@@ -11,7 +11,7 @@ export function DesktopNav() {
     <nav aria-label="Основна навігація" className="hidden lg:block">
       <ul className="flex items-center gap-6 xl:gap-8">
         {NAV_ITEMS.map((item) => {
-          const isActive = activeId === item.href.slice(1);
+          const isActive = activeId === sectionIdOf(item.href);
 
           return (
             <li key={item.href}>

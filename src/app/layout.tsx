@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { MobileActionBar } from "@/components/layout/MobileActionBar";
+import { siteConfig } from "@/config/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +16,40 @@ const geistMono = Geist_Mono({
   subsets: ["latin", "cyrillic"],
 });
 
+const TITLE = "Вантажники у Вінниці — квартирні та офісні переїзди | VinGo";
+const DESCRIPTION =
+  "Вантажники у Вінниці 24/7: квартирні й офісні переїзди, перенесення меблів і техніки, вантажне таксі. Приїзд від 30 хв. Тел. 097 336 37 33.";
+
 export const metadata: Metadata = {
-  title: "VinGo — вантажники та переїзди у Вінниці",
-  description:
-    "Професійні вантажники, квартирні та офісні переїзди у Вінниці. Транспорт за потреби.",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: TITLE,
+    template: "%s | VinGo",
+  },
+  description: DESCRIPTION,
+  applicationName: siteConfig.name,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "uk_UA",
+    url: "/",
+    siteName: siteConfig.name,
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+  robots: { index: true, follow: true },
+  // Phone numbers in copy stay plain text; real call links are explicit tel: hrefs.
+  formatDetection: { telephone: false },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
