@@ -30,13 +30,22 @@ export function Header() {
           <DesktopNav />
 
           <div className="hidden items-center gap-6 lg:flex">
+            {/* Call button: icon in an emerald ring + "Дзвоніть 24/7" caption
+                so it clearly reads as "tap/click to call", not as plain text. */}
             <a
               href={siteConfig.phone.href}
               aria-label={`Зателефонувати: ${siteConfig.phone.display}`}
-              className="inline-flex items-center gap-2 rounded-sm text-body-small font-medium text-text-secondary transition-colors duration-150 ease-standard hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary"
+              className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] py-1.5 pl-1.5 pr-4 transition-[border-color,background-color,box-shadow] duration-150 ease-standard hover:border-primary/40 hover:bg-primary/[0.06] hover:shadow-[0_0_24px_-8px_rgba(24,160,111,0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary"
             >
-              <Phone className="h-4 w-4" aria-hidden="true" />
-              {siteConfig.phone.display}
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-primary/30 bg-primary/15 text-primary transition-colors duration-150 group-hover:bg-primary/25">
+                <Phone className="h-4 w-4" strokeWidth={1.75} aria-hidden="true" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-[0.6875rem] font-medium text-text-secondary">Дзвоніть 24/7</span>
+                <span className="text-body-small font-semibold text-text-primary transition-colors duration-150 group-hover:text-primary">
+                  {siteConfig.phone.display}
+                </span>
+              </span>
             </a>
 
             <a

@@ -1,6 +1,5 @@
 "use client";
 
-import { Phone } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
@@ -62,22 +61,20 @@ export function Footer() {
               </Typography>
             </div>
 
-            <div className="flex shrink-0 flex-col items-start gap-2 lg:items-center">
+            {/* Main CTA on top; call / Telegram / Viber as one row of equal
+                pills underneath, phone highlighted as the primary contact. */}
+            <div className="mt-3 flex w-full shrink-0 flex-col gap-3 sm:w-auto lg:mt-0">
               <a
                 href={`#${siteConfig.orderFormSectionId}`}
-                className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full sm:w-auto")}
+                className={cn(buttonVariants({ variant: "primary", size: "lg" }), "w-full")}
               >
                 Замовити вантажників
               </a>
-              <a
-                href={siteConfig.phone.href}
-                aria-label={`Зателефонувати: ${siteConfig.phone.display}`}
-                className="inline-flex items-center gap-2 rounded-sm text-body-small font-medium text-text-secondary transition-colors duration-150 ease-standard hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background-primary"
-              >
-                <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
-                {siteConfig.phone.display}
-              </a>
-              <MessengerLinks label="" className="mt-1" />
+              <MessengerLinks
+                label=""
+                withPhone
+                className="max-lg:[&>a]:flex-1 max-lg:[&>a]:justify-center max-lg:[&>a:first-child]:basis-full lg:flex-nowrap"
+              />
             </div>
           </div>
 
