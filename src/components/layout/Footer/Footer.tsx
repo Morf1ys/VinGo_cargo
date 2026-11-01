@@ -4,6 +4,7 @@ import { Phone } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 import { Section } from "@/components/ui/Section";
 import { Typography } from "@/components/ui/Typography";
 import { siteConfig } from "@/config/site";
@@ -76,6 +77,7 @@ export function Footer() {
                 <Phone className="h-4 w-4 text-primary" aria-hidden="true" />
                 {siteConfig.phone.display}
               </a>
+              <MessengerLinks label="" className="mt-1" />
             </div>
           </div>
 

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { ArrowUpRight, Headset, Menu, Phone, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { buttonVariants } from "@/components/ui/Button";
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 import { cn } from "@/lib/utils";
 import { duration, easing } from "@/lib/theme/motion";
 import { siteConfig } from "@/config/site";
@@ -219,10 +220,12 @@ export function MobileMenu() {
                         </span>
                       </a>
 
+                      <MessengerLinks label="" className="mt-4 [&>a]:flex-1 [&>a]:justify-center" />
+
                       <a
                         href={`#${siteConfig.orderFormSectionId}`}
                         onClick={close}
-                        className={cn(buttonVariants({ variant: "primary", size: "lg" }), "mt-4 w-full")}
+                        className={cn(buttonVariants({ variant: "primary", size: "lg" }), "mt-3 w-full")}
                       >
                         Залишити заявку
                       </a>

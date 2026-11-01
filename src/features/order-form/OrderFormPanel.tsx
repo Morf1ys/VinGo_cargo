@@ -1,3 +1,4 @@
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 import { Typography } from "@/components/ui/Typography";
 import { cn } from "@/lib/utils";
 import { OrderForm } from "./OrderForm";
@@ -6,7 +7,7 @@ import { OrderForm } from "./OrderForm";
 // sit next to the "How it works" steps).
 export function OrderFormPanel({ id, className }: { id?: string; className?: string }) {
   return (
-    <div id={id} className={cn("relative w-full", className)}>
+    <div id={id} data-order-form-panel className={cn("relative w-full", className)}>
       {/* Soft ambient emerald glow OUTSIDE the panel, small and close to the
           corner — edge lighting, not a spotlight. */}
       <div
@@ -35,6 +36,10 @@ export function OrderFormPanel({ id, className }: { id?: string; className?: str
           </Typography>
         </div>
         <OrderForm />
+
+        <div className="mt-6 border-t border-white/[0.06] pt-5 short:mt-5 short:pt-4">
+          <MessengerLinks label="Зручніше в месенджері?" />
+        </div>
       </div>
     </div>
   );

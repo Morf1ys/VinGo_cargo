@@ -15,6 +15,7 @@ import type { LucideIcon } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
+import { MessengerLinks } from "@/components/ui/MessengerLinks";
 import { Section } from "@/components/ui/Section";
 import { Typography } from "@/components/ui/Typography";
 import { siteConfig } from "@/config/site";
@@ -97,6 +98,12 @@ function HeroDashboard() {
 function HeroContent() {
   return (
     <div>
+      {/* Mobile/tablet copy of the van — the desktop one lives in the right
+          column. Gives small screens a visual hook in the first second. */}
+      <div className="relative -mx-4 mb-4 h-52 sm:mx-0 sm:h-64 lg:hidden">
+        <HeroVan className="absolute inset-0" />
+      </div>
+
       <BrandStatusRow />
 
       <Typography
@@ -154,6 +161,8 @@ function HeroContent() {
           Зателефонувати
         </a>
       </div>
+
+      <MessengerLinks className="mt-5 short:mt-4" />
 
       <div className="mt-4 flex items-center gap-2">
         <LockKeyhole className="h-3.5 w-3.5 shrink-0 text-text-secondary" aria-hidden="true" />

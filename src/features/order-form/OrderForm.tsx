@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Boxes, ChevronDown, PlusCircle, Truck, UserRound } from "lucide-react";
+import { OrderSentAnimation } from "./OrderSentAnimation";
 import type { LucideIcon } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useForm, useWatch } from "react-hook-form";
@@ -89,11 +90,12 @@ export function OrderForm() {
         role="status"
         className="w-full rounded-md border border-border-default bg-surface-elevated/60 p-6 text-center shadow-card ring-1 ring-inset ring-primary/10 backdrop-blur-sm"
       >
-        <Typography as="p" variant="h3" className="mb-2">
-          Дякуємо!
+        <OrderSentAnimation />
+        <Typography as="p" variant="h3" weight="semibold" className="mb-2 mt-5">
+          Дякуємо! Заявка вже в дорозі
         </Typography>
         <Typography as="p" variant="body" color="secondary">
-          Ваша заявка надіслана.
+          Ми зв&apos;яжемося з вами найближчим часом, щоб уточнити деталі.
         </Typography>
       </div>
     );

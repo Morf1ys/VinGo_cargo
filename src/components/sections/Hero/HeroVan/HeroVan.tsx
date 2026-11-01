@@ -1,7 +1,8 @@
 "use client";
 
-import { useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "motion/react";
+import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import { easing } from "@/lib/theme/motion";
 import {
@@ -55,6 +56,33 @@ export function HeroVan({ className }: { className?: string }) {
   const inView = useInView(ref);
   const reduce = useReducedMotion() ?? false;
   const loop = inView && !reduce;
+
+  // Headlight "flash" whenever any order CTA on the page is hovered or
+  // focused — a small reward that ties the van to the main action. Ignored
+  // until the intro has finished and throttled so it never strobes.
+  const [flashCount, setFlashCount] = useState(0);
+  useEffect(() => {
+    if (reduce) return;
+    const readyAt = performance.now() + (T.lights + 1.3) * 1000;
+    let lastFlash = 0;
+    const selector = `a[href="#${siteConfig.orderFormSectionId}"]`;
+
+    const handle = (event: Event) => {
+      const target = event.target;
+      if (!(target instanceof Element) || !target.closest(selector)) return;
+      const now = performance.now();
+      if (now < readyAt || now - lastFlash < 1500) return;
+      lastFlash = now;
+      setFlashCount((count) => count + 1);
+    };
+
+    document.addEventListener("pointerover", handle);
+    document.addEventListener("focusin", handle);
+    return () => {
+      document.removeEventListener("pointerover", handle);
+      document.removeEventListener("focusin", handle);
+    };
+  }, [reduce]);
 
   const draw = (delay: number, length = 1.4) =>
     reduce
@@ -221,6 +249,19 @@ export function HeroVan({ className }: { className?: string }) {
             {headlightPaths.map((d) => (
               <path key={d} d={d} fill={LIGHT} fillOpacity={0.9} stroke={LIGHT} strokeWidth={1} />
             ))}
+            {flashCount > 0 && (
+              <motion.g
+                key={flashCount}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0.1, 1, 0] }}
+                transition={{ duration: 0.9, times: [0, 0.15, 0.35, 0.5, 1], ease: "easeOut" }}
+              >
+                <path d={beamPath} fill={`url(#${id}-beam)`} filter={`url(#${id}-beamBlur)`} />
+                {headlightCenters.map(([cx, cy]) => (
+                  <circle key={`flash-${cx}-${cy}`} cx={cx} cy={cy} r={18} fill={LIGHT} filter={`url(#${id}-glow)`} />
+                ))}
+              </motion.g>
+            )}
             {headlightCenters.map(([cx, cy]) => (
               <motion.circle
                 key={`${cx}-${cy}`}
