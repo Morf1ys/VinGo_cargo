@@ -1,8 +1,11 @@
 export const siteConfig = {
   name: "VinGo",
-  // Set NEXT_PUBLIC_SITE_URL to the production domain.
+  // Set NEXT_PUBLIC_SITE_URL to the production domain; until then the
+  // host's own address is used
+  // (Netlify: URL, Vercel: VERCEL_PROJECT_PRODUCTION_URL).
   url: (
     process.env.NEXT_PUBLIC_SITE_URL ??
+    process.env.URL ??
     (process.env.VERCEL_PROJECT_PRODUCTION_URL
       ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
       : "http://localhost:3000")
